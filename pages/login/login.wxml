@@ -1,0 +1,14 @@
+<!--pages/share/share.wxml-->
+<view class="login">
+  <image class="bg" mode="widthFix" src="../../images/bg3.png" style="width: 100%;z-index: -1;"></image>
+
+  <input class="c" style="top: 44%;left: 34%; width: 52%;height: 4%;" bindinput="setState" value="{{phone}}" data-name="phone" type="number" maxlength="11" placeholder="输入有效手机号" placeholder-class="placeholder" />
+
+  <input class="c" style="top: 50.1%;left: 34%; width: 30%;height: 4%;" bindinput="setState" value="{{code1}}" data-name="code1" type="number" maxlength="4" placeholder="输入验证码" placeholder-class="placeholder" />
+
+  <input class="c" style="top: 56.1%;left: 34%; width: 30%;height: 4%;" bindinput="setState" value="{{code2}}" data-name="code2" type="number" maxlength="6" placeholder="输入短信验证码" placeholder-class="placeholder" />
+
+  <view class="c" style="top: 56%;left: 65%; width: 23%;height: 4%;" bindtap="ma"></view>
+
+  <view class="c" style="top: 62%;left: 27%; width: 46%;height: 9%;" bindtap="denglu"></view>
+</view>

@@ -1,0 +1,30 @@
+/* pages/share/share.wxss */
+.share {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fdf2a9;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 0 1px #000, 1px 0 #000, -1px 0 #000, 0 -1px #000;
+}
+
+.total image {
+  width: 120rpx;
+  margin-left: 10rpx;
+}
+
+.tel {
+  font-weight: bold;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #fdf2a9;
+  text-shadow: 0 2px #000, 2px 0 #000, -2px 0 #000, 0 -2px #000, 2px -2px #000, -2px 2px #000, 2px 2px #000, -2px -2px #000;
+}

@@ -1,0 +1,15 @@
+/* pages/share/share.wxss */
+.login {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+input {
+  display: inline-block;
+}
+
+.placeholder {
+  font-size: 0.8rem;
+  color: #999;
+}

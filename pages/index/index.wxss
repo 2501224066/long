@@ -1,0 +1,70 @@
+.home {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fdf2a9;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-style: italic;
+  text-shadow: 0 1px #000, 1px 0 #000, -1px 0 #000, 0 -1px #000;
+}
+
+.total image {
+  width: 120rpx;
+  margin-left: 10rpx;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 3% 13%;
+  box-sizing: border-box;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.item>view:nth-child(1) {
+  width: 40%;
+}
+
+.jitui {
+  width: 50rpx !important;
+  margin-right: 10rpx;
+}
+
+.wc {
+  width: 170rpx !important;
+}
+
+.renyuan {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.tx {
+  width: 120rpx !important;
+}
+
+.jiangli {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.num {
+  color: red;
+  font-size: 25rpx;
+}
+
+.jl {
+  width: 180rpx !important;
+  margin: 10rpx 0;
+}

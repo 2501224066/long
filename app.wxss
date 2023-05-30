@@ -1,0 +1,14 @@
+/**app.wxss**/
+.page {
+  background: #000;
+}
+
+.c {
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+}
+
+
+image {
+  display: block;
+}
