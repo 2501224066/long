@@ -61,7 +61,7 @@
 
 .num {
   color: red;
-  font-size: 25rpx;
+  font-size: 22rpx;
 }
 
 .jl {

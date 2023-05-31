@@ -1,4 +1,4 @@
-const BASE_URL = 'http://42.192.146.116:9050/mall-miniapp'
+const BASE_URL = 'https://ltyx.ouyym.com/nty'
 
 module.exports = {
   BASE_URL

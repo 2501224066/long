@@ -1,15 +1,30 @@
 /* pages/share/share.wxss */
 .login {
-  position: relative;
-  left: 0;
-  top: 0;
+    position: relative;
+    left: 0;
+    top: 0;
 }
 
 input {
-  display: inline-block;
+    display: inline-block;
 }
 
 .placeholder {
-  font-size: 0.8rem;
-  color: #999;
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.agree {
+    font-size: 24rpx;
+    display: flex;
+    align-items: flex-start;
+}
+
+.agree>image {
+    width: 50rpx;
+    margin-right: 6rpx;
+}
+
+.agree span {
+    color: rgb(94, 141, 228);
 }

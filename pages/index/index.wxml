@@ -1,65 +1,64 @@
 <!--index.wxml-->
 <view class="home">
-  <image class="bg" mode="widthFix" src="../../images/bg1.png" style="width: 100%;z-index: -1;"></image>
+    <image class="bg" mode="widthFix" src="../../images/bg1.png" style="width: 100%;z-index: -1;"></image>
 
-  <alert></alert>
+    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}"></alert>
 
-  <view class="c" style="top: 0.6%;right: 1.8%; width: 14%;height: 0.8%;" bindtap="denglu"></view>
+    <view class="c" style="top: 0.6%;right: 1.8%; width: 14%;height: 0.8%;" bindtap="denglu"></view>
 
-  <view class="c" style="top: 2%;right: 0; width: 7%;height: 2.6%;" bindtap="guize"></view>
+    <view class="c" style="top: 2%;right: 0; width: 7%;height: 2.6%;" bindtap="guize"></view>
 
-  <view class="c" style="top: 4.7%;right: 0; width: 7%;height: 2.6%;" bindtap="beibao"></view>
+    <view class="c" style="top: 4.7%;right: 0; width: 7%;height: 2.6%;" bindtap="beibao"></view>
 
-  <view class="c" style="top: 16.5%;left: 27%; width: 46%;height: 2%;" bindtap="yuyue"></view>
+    <view class="c" style="opacity: 0; top: 16.5%;left: 27%; width: 46%;height: 2%;" bindtap="getUserInfo"></view>
 
-  <view class="c total" style="top: 18.2%;left: 0%; width: 100%;height: 2%;">
-    <image src="../../images/dqyy.png" mode="widthFix"></image>
-    12345
-    <image src="../../images/qsyy.png" mode="widthFix"></image>
-  </view>
-
-  <view class="c" style="top:23.8%;left: 39%; width: 22%;height: 1.2%;" bindtap="dingyue"></view>
-
-  <!-- 人员 -->
-  <view class="c renyuan" style="top:21.2%;left: 0%; width: 100%;">
-    <image class="tx" src="../../images/{{index === 0 ? 'touxiang' : 'add'}}.png" mode="widthFix" wx:for="{{[1,2,3,4,5]}}" wx:key="index"></image>
-  </view>
-
-  <!-- 奖励 -->
-  <view class="c jiangli" style="top:32.7%;left: 10%; width: 80%;">
-    <image class="jl" src="../../images/{{index === 4 ? 'kaishi' : 'jiangli'}}.png" mode="widthFix" wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="index"></image>
-  </view>
-  <view class="c num" style="top: 39.75%;left: 46.7%;width: 12px;text-align: center;">10</view>
-
-  <!-- 每日 -->
-  <view class="c item" style="top:53.2%;left: 0; width: 100%;">
-    <view>完成每日登录</view>
-    <view style="display: flex;align-items: center;">
-      <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+    <view class="c total" style="top: 18.2%;left: 0%; width: 100%;height: 2%;">
+        <image src="../../images/dqyy.png" mode="widthFix"></image>
+        12345
+        <image src="../../images/qsyy.png" mode="widthFix"></image>
     </view>
-    <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
-  </view>
 
+    <view class="c" style="top:23.8%;left: 39%; width: 22%;height: 1.2%;" bindtap="dingyue"></view>
 
-  <!-- 限时 -->
-  <view class="c item" style="top: {{index*2.15 + 58.6 +'%'}};left: 0;width: 100%;" wx:for="{{[1,2,3,4,5]}}" wx:key="index">
-    <view>完成每日登录</view>
-    <view style="display: flex;align-items: center;">
-      <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+    <!-- 人员 -->
+    <view class="c renyuan" style="top:21.2%;left: 0%; width: 100%;">
+        <image class="tx" src="../../images/{{index === 0 ? 'touxiang' : 'add'}}.png" mode="widthFix" wx:for="{{[1,2,3,4,5]}}" wx:key="index"></image>
     </view>
-    <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
-  </view>
 
-  <!-- 单次 -->
-  <view class="c item" style="top: {{index*2.15 + 73.25 +'%'}};left: 0;width: 100%;" wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="index">
-    <view>完成每日登录</view>
-    <view style="display: flex;align-items: center;">
-      <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+    <!-- 奖励 -->
+    <view class="c jiangli" style="top:32.7%;left: 10%; width: 80%;">
+        <image class="jl" src="../../images/{{index === 4 ? 'kaishi' : 'jiangli'}}.png" mode="widthFix" wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="index"></image>
     </view>
-    <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
-  </view>
+    <view class="c num" style="top: 39.8%;left: 46.7%;width: 12px;text-align: center;">10</view>
 
-  <view class="c" style="bottom:1.5%;left: 18%; width: 28%;height: 4.8%;" bindtap="gongzhonghao"></view>
+    <!-- 每日 -->
+    <view class="c item" style="top:53.2%;left: 0; width: 100%;">
+        <view>完成每日登录</view>
+        <view style="display: flex;align-items: center;">
+            <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+        </view>
+        <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+    </view>
 
-  <view class="c" style="bottom:1.5%;left: 54%; width: 28%;height: 4.8%;" bindtap="weixin"></view>
+    <!-- 限时 -->
+    <view class="c item" style="top: {{index*2.15 + 58.6 +'%'}};left: 0;width: 100%;" wx:for="{{[1,2,3,4,5]}}" wx:key="index">
+        <view>完成每日登录</view>
+        <view style="display: flex;align-items: center;">
+            <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+        </view>
+        <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+    </view>
+
+    <!-- 单次 -->
+    <view class="c item" style="top: {{index*2.15 + 73.25 +'%'}};left: 0;width: 100%;" wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="index">
+        <view>完成每日登录</view>
+        <view style="display: flex;align-items: center;">
+            <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+        </view>
+        <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+    </view>
+
+    <view class="c" style="bottom:1.5%;left: 18%; width: 28%;height: 4.8%;" bindtap="gongzhonghao"></view>
+
+    <view class="c" style="bottom:1.5%;left: 54%; width: 28%;height: 4.8%;" bindtap="weixin"></view>
 </view>

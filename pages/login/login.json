@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+    "usingComponents": {
+        "t-captcha": "plugin://myPlugin/t-captcha"
+    },
+    "navigationStyle": "custom"
 }

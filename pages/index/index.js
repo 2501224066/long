@@ -1,16 +1,47 @@
-// index.js
-// 获取应用实例
-const app = getApp()
+import {
+    wxLogin
+} from '../../api/index'
 
 Page({
-  data: {
+    data: {
+        alert: {
+            show: false,
+            type: 1,
+            type2: 0
+        },
+    },
+    onLoad() {
+    },
 
-  },
-  onLoad() {
+    getUserInfo(e) {
+        wx.getUserProfile({
+            desc: '用于完善会员资料',
+            success: (res) => {
+                wx.setStorageSync('userInfo', res.rawData)
+                wx.navigateTo({
+                  url: '/pages/login/login',
+                })
+            }
+        })
+    },
 
-  },
+    guize() {
+        this.setData({
+            alert: {
+                show: true,
+                type: 4,
+                type2: 0
+            }
+        })
+    },
 
-  yuyue() {
-    console.log('xx')
-  }
+    beibao() {
+        this.setData({
+            alert: {
+                show: true,
+                type: 11,
+                type2: 0
+            }
+        })
+    }
 })

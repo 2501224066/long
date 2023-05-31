@@ -2,15 +2,15 @@ Component({
   properties: {
     type: {
       type: Number,
-      value: 11,
+      value: 1,
     },
     type2: {
       type: Number,
-      value: 2,
+      value: 0,
     },
     show: {
       type: Boolean,
-      value: true,
+      value: false,
     }
   },
   data: {
@@ -57,9 +57,7 @@ Component({
     },
 
     fuzhi: function () {
-      this.setData({
-        type2: 2
-      })
+        console.log(778)
     },
 
     tijiao: function () {
