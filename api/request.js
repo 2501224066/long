@@ -3,25 +3,19 @@ import {
 } from './constant.js'
 
 const go = function (obj) {
-    wx.showLoading({
-        title: '请求中',
-        duration: 2000,
-        mask: true
-    })
     return new Promise((resolve, reject) => {
         wx.request({
             url: BASE_URL + obj.url,
             method: obj.method,
             data: obj.data,
             header: {
-                'Authorization': wx.getStorageSync('token') || '',
+                'token': wx.getStorageSync('token') || '',
                 'content-type': 'application/json' // 默认值
             },
-            success: function (res) {
-                wx.hideLoading() //隐藏loading
+            success: function (res) {                    
                 if (res.data.code === 200) {
                     resolve(res.data)
-                } else if (res.data.code === 401) {
+                } else if (res.data.code === 403) {
                     wx.showToast({
                         icon: 'none',
                         title: '登录已过期'
@@ -31,8 +25,13 @@ const go = function (obj) {
                             url: "/pages/login/login",
                         })
                     }, 1000)
+                } else if (res.data.code === -1) {
+                    wx.showToast({
+                        icon: 'none',
+                        title: res.data.msg
+                    })
                 } else {
-                    resolve(res)
+                    resolve(res.data)
                 }
             },
             fail: function () {

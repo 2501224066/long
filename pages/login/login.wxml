@@ -2,6 +2,8 @@
 <view class="login">
     <image class="bg" mode="widthFix" src="../../images/bg3.png" style="width: 100%;z-index: -1;"></image>
 
+    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}" bind:denglu="denglu2"></alert>
+
     <input class="c" style="top: 44%;left: 34%; width: 52%;height: 4%;" bindinput="setState" value="{{phone}}" data-name="phone" type="number" maxlength="11" placeholder="输入有效手机号" placeholder-class="placeholder" />
 
     <input class="c" readonly="true" style="top: 50.1%;left: 34%; width: 52%;height: 4%;" bindtap="yanzheng" placeholder="{{code1 ? '验证完成' : '点击验证'}}" placeholder-class="placeholder" />

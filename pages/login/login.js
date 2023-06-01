@@ -12,6 +12,12 @@ Page({
         code2: null,
         agree: false,
         shareCode: 0,
+        alert: {
+            show: false,
+            type: 1,
+            type2: 0,
+            obj: {}
+        },
     },
 
     onLoad() {
@@ -22,9 +28,9 @@ Page({
         let that = this
         // 获取code
         wx.login({
-            success(res) {
+            success(e) {
                 that.setData({
-                    code: res.code
+                    code: e.code
                 })
             }
         })
@@ -80,7 +86,7 @@ Page({
             "ticket": this.data.code1,
             "randstr": Math.random().toString(36).substr(5, 4)
         }).then(res => {
-            if (res.data.code === -1) {
+            if (res.code === -1) {
                 wx.showToast({
                     icon: "error",
                     title: '发送失败',
@@ -110,47 +116,35 @@ Page({
             })
             return
         }
+        let that = this
         bindOther({
             "mobile": this.data.phone,
             "mobile_code": this.data.code2
         }).then(res => {
-            if (res.data.code === -1) {
-                wx.showToast({
-                    icon: "none",
-                    title: '短信验证码错误',
-                })
+            if (res.code === 703) {
                 this.setData({
-                    code2: null
-                })
-                return
-            }
-            if (res.data.code === 703) {
-                wx.showModal({
-                    title: '提示',
-                    content: '当前登录手机号已绑定其他微信,继续登录将解绑原有微信，并绑定当前微信',
-                    success(res) {
-                        if (res.confirm) {
-                            this.denglu2()
-                        } else if (res.cancel) {
-                            return
-                        }
+                    alert: {
+                        show: true,
+                        type: 1,
+                        type2: 0
                     }
                 })
             } else {
-                this.denglu2()
+                that.denglu2()
             }
         })
     },
 
     denglu2() {
-        const userInfo = JSON.parse(wx.getStorageSync('userInfo'))
+        const userInfo = wx.getStorageSync('userInfo')
         login({
             "mobile": this.data.phone,
             "share_user_id": this.data.shareCode,
             "code": this.data.code,
-            "wx_nickname": userInfo.nickName,
+            "wx_nickname": userInfo.nickname,
             "wx_headimgurl": userInfo.avatarUrl
         }).then(res => {
+            wx.setStorageSync('phone', this.data.phone.toString())
             wx.setStorageSync('loginStatus', true)
             wx.setStorageSync('userId', res.data.id)
             wx.setStorageSync('token', res.data.token)
@@ -160,7 +154,7 @@ Page({
             })
             setTimeout(() => {
                 wx.redirectTo({
-                    url: "/pages/index/index",
+                    url: "/pages/index/index?dycg=1",
                 })
             }, 1000)
         })

@@ -1,16 +1,18 @@
 <!--pages/share/share.wxml-->
 <view class="share">
-  <image class="bg" mode="widthFix" src="../../images/bg5.png" style="width: 100%;z-index: -1;"></image>
+    <image class="bg" mode="widthFix" src="../../images/{{loginStatus ? 'bg5' : 'bg4'}}.png" style="width: 100%;z-index: -1;"></image>
 
-  <view class="c total" style="top: 45.8%;left: 0%; width: 100%;height: 2%;">
-    <image src="../../images/dqyy.png" mode="widthFix"></image>
-    12345
-    <image src="../../images/qsyy.png" mode="widthFix"></image>
-  </view>
+    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}"></alert>
 
-  <view class="c tel" style="top: 55.4%;left: 11%; width: 46%;">
-    188****3944
-  </view>
+    <view class="c total" style="top: 45.8%;left: 0%; width: 100%;height: 2%;">
+        <image src="../../images/dqyy.png" mode="widthFix"></image>
+        {{manNum}}
+        <image src="../../images/qsyy.png" mode="widthFix"></image>
+    </view>
 
-  <view class="c" style="top: 64.5%;left: 27%; width: 46%;height: 10%;" bindtap="jiaru"></view>
+    <view class="c tel" style="top: 55.4%;left: 11%; width: 46%;">
+        {{ivPhone}}
+    </view>
+
+    <view class="c" style="top: 64.5%;left: 27%; width: 46%;height: 10%;" bindtap="jieshou"></view>
 </view>

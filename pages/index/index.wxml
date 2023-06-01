@@ -2,19 +2,25 @@
 <view class="home">
     <image class="bg" mode="widthFix" src="../../images/bg1.png" style="width: 100%;z-index: -1;"></image>
 
-    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}"></alert>
+    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}" bind:dingyue="dingyue"></alert>
 
-    <view class="c" style="top: 0.6%;right: 1.8%; width: 14%;height: 0.8%;" bindtap="denglu"></view>
+    <info show="{{info.show}}"></info>
+
+    <view wx:if="{{!loginStatus}}" class="c" style="top: 0.6%;right: 1.8%; width: 30%;height: 0.8%;font-size: 28rpx;text-align: right;">你好，请<span style="color: #f6e14d;">【登录】</span></view>
+    <view wx:else class="c" style="top: 0.6%;right: 1.8%; width: 50%;height: 0.8%;font-size: 28rpx;text-align: right;" bindtap="jiebang">你好，{{phone}}<span style="color: #f6e14d;">【解绑】</span></view>
 
     <view class="c" style="top: 2%;right: 0; width: 7%;height: 2.6%;" bindtap="guize"></view>
 
     <view class="c" style="top: 4.7%;right: 0; width: 7%;height: 2.6%;" bindtap="beibao"></view>
 
-    <view class="c" style="opacity: 0; top: 16.5%;left: 27%; width: 46%;height: 2%;" bindtap="getUserInfo"></view>
+    <button open-type="share" size="mini" class="c ub" style="top: 16.5%;left: 27%; width: 46% !important;height: 2%;">
+        <image wx:if="{{!loginStatus}}" src="../../images/yyyx.png" mode="widthFix" style="width: 100%;"></image>
+        <image wx:else src="../../images/yqhy.png" mode="widthFix" style="width: 100%;"></image>
+    </button>
 
     <view class="c total" style="top: 18.2%;left: 0%; width: 100%;height: 2%;">
         <image src="../../images/dqyy.png" mode="widthFix"></image>
-        12345
+        {{manNum}}
         <image src="../../images/qsyy.png" mode="widthFix"></image>
     </view>
 
@@ -22,43 +28,57 @@
 
     <!-- 人员 -->
     <view class="c renyuan" style="top:21.2%;left: 0%; width: 100%;">
-        <image class="tx" src="../../images/{{index === 0 ? 'touxiang' : 'add'}}.png" mode="widthFix" wx:for="{{[1,2,3,4,5]}}" wx:key="index"></image>
+        <view wx:for="{{inviteList}}" wx:key="index">
+            <image class="tx1" src="{{item.wx_headimgurl || '../../images/touxiang.png'}}" mode="aspectFill"></image>
+        </view>
+        <view wx:for="{{5 - inviteList.length}}" wx:key="index">
+            <button open-type="share" class="ub">
+                <image class="tx" src="../../images/add.png" mode="widthFix" bindtap="yyyq"></image>
+            </button>
+        </view>
     </view>
 
     <!-- 奖励 -->
     <view class="c jiangli" style="top:32.7%;left: 10%; width: 80%;">
-        <image class="jl" src="../../images/{{index === 4 ? 'kaishi' : 'jiangli'}}.png" mode="widthFix" wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="index"></image>
+        <view class="jl" wx:for="{{luckList}}" wx:key="index">
+            <image wx:if="{{index === 4}}" class="jlbg" src=" ../../images/kaishi.png" mode="widthFix" bindtap="kaishi"></image>
+            <image wx:if="{{index !== 4}}" class="jlbg" src=" ../../images/{{zhongjiang === index ? 'zhongjiang' : 'jiangli'}}.png" mode="widthFix"></image>
+            <image wx:if="{{index !== 4}}" class="luck" src="{{item.luck_img}}" mode="aspectFill"></image>
+            <view wx:if="{{index !== 4}}" class="lname">{{item.luck_title}}</view>
+        </view>
     </view>
-    <view class="c num" style="top: 39.8%;left: 46.7%;width: 12px;text-align: center;">10</view>
+    <view class="c num" style="top: 39.8%;left: 46.7%;width: 12px;text-align: center;">{{num}}</view>
 
     <!-- 每日 -->
     <view class="c item" style="top:53.2%;left: 0; width: 100%;">
-        <view>完成每日登录</view>
+        <view>{{todoList[0][0].title}}</view>
         <view style="display: flex;align-items: center;">
             <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+        <image class="wc" src="../../images/{{todoList[0][0].status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-status="{{todoList[0][0].status}}"></image>
     </view>
 
     <!-- 限时 -->
-    <view class="c item" style="top: {{index*2.15 + 58.6 +'%'}};left: 0;width: 100%;" wx:for="{{[1,2,3,4,5]}}" wx:key="index">
-        <view>完成每日登录</view>
+    <view class="c item" style="top: {{index*2.15 + 58.6 +'%'}};left: 0;width: 100%;" wx:for="{{todoList[1]}}" wx:key="index">
+        <view>{{item.title}}</view>
         <view style="display: flex;align-items: center;">
             <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+        <image class="wc" src="../../images/{{item.status === 1 ? 'quwancheng' : item.status === 2 ? 'yiwancheng' : 'jieshu'}}.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
     </view>
 
     <!-- 单次 -->
-    <view class="c item" style="top: {{index*2.15 + 73.25 +'%'}};left: 0;width: 100%;" wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:key="index">
-        <view>完成每日登录</view>
+    <view class="c item" style="top: {{index*2.15 + 73.25 +'%'}};left: 0;width: 100%;" wx:for="{{todoList[2]}}" wx:key="index">
+        <view>{{item.title}}</view>
         <view style="display: flex;align-items: center;">
             <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+        <image class="wc" src="../../images/{{item.status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
     </view>
 
     <view class="c" style="bottom:1.5%;left: 18%; width: 28%;height: 4.8%;" bindtap="gongzhonghao"></view>
 
     <view class="c" style="bottom:1.5%;left: 54%; width: 28%;height: 4.8%;" bindtap="weixin"></view>
+
+    <view wx:if="{{!loginStatus}}" class="mask" bindtap="getInfo"></view>
 </view>

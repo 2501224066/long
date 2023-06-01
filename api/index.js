@@ -25,3 +25,117 @@ export function smsMobile(data, repair = '') {
         data: data
     })
 }
+
+export function uploadImage(data, repair = '') {
+    return common.go({
+        method: 'post',
+        url: '/upload/image' + repair,
+        data: data
+    })
+}
+
+
+export function loginOut(data, repair = '') {
+    return common.go({
+        method: 'post',
+        url: '/user/loginOut' + repair,
+        data: data
+    })
+}
+
+export function inviteList(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/user/my-invite' + repair,
+        data: data
+    })
+}
+
+export function todoList(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/miss/lists' + repair,
+        data: data
+    })
+}
+
+export function luckList(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/luck/get-config-list' + repair,
+        data: data
+    })
+}
+
+export function luck(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/luck/get' + repair,
+        data: data
+    })
+}
+
+export function getData(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/user/init-login' + repair,
+        data: data
+    })
+}
+
+export function getLuckInfo(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/luck/info' + repair,
+        data: data
+    })
+}
+
+export function getCodeInfo(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/luck/code-info' + repair,
+        data: data
+    })
+}
+
+export function getAddress(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/address/get' + repair,
+        data: data
+    })
+}
+
+export function setAddress(data, repair = '') {
+    return common.go({
+        method: 'post',
+        url: '/address/set' + repair,
+        data: data
+    })
+}
+
+
+export function manNum(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/user/basicInfo' + repair,
+        data: data
+    })
+}
+
+export function accept(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/user/accept-invite' + repair,
+        data: data
+    })
+}
+
+export function invite(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/user/invite' + repair,
+        data: data
+    })
+}

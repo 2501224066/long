@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "t-captcha": "plugin://myPlugin/t-captcha"
+        "t-captcha": "plugin://myPlugin/t-captcha",
+        "alert": "/components/alert/alert"
     },
     "navigationStyle": "custom"
 }
