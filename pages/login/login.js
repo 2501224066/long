@@ -1,7 +1,8 @@
 import {
     bindOther,
     login,
-    smsMobile
+    smsMobile,
+    captcha
 } from '../../api/index'
 
 Page({
@@ -12,6 +13,8 @@ Page({
         code2: null,
         agree: false,
         shareCode: 0,
+        captcha: null,
+        captchaKey: null,
         alert: {
             show: false,
             type: 1,
@@ -22,6 +25,19 @@ Page({
 
     onLoad() {
         this.getCode()
+        this.getCaptcha()
+        this.setData({
+            shareCode: wx.getStorageSync('ivId') || 0
+        })
+    },
+
+    getCaptcha() {
+        captcha().then(res => {
+            this.setData({
+                captcha: res.data.base64_image,
+                captchaKey: res.data.key
+            })
+        })
     },
 
     getCode() {
@@ -40,11 +56,6 @@ Page({
         this.setData({
             agree: !this.data.agree
         })
-    },
-
-    yanzheng() {
-        if (!this.phoneYZ()) return
-        this.selectComponent('#captcha').show()
     },
 
     phoneYZ() {
@@ -82,9 +93,9 @@ Page({
             return
         }
         smsMobile({
-            "mobile": this.data.phone,
-            "ticket": this.data.code1,
-            "randstr": Math.random().toString(36).substr(5, 4)
+            mobile: this.data.phone,
+            key: this.data.captchaKey,
+            captcha_code: this.data.code1
         }).then(res => {
             if (res.code === -1) {
                 wx.showToast({
@@ -118,8 +129,8 @@ Page({
         }
         let that = this
         bindOther({
-            "mobile": this.data.phone,
-            "mobile_code": this.data.code2
+            mobile: this.data.phone,
+            mobile_code: this.data.code2
         }).then(res => {
             if (res.code === 703) {
                 this.setData({
@@ -148,6 +159,7 @@ Page({
             wx.setStorageSync('loginStatus', true)
             wx.setStorageSync('userId', res.data.id)
             wx.setStorageSync('token', res.data.token)
+            wx.removeStorageSync('ivId')
             wx.showToast({
                 icon: 'success',
                 title: '登录成功'

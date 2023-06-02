@@ -2,6 +2,7 @@ import {
     manNum,
     accept
 } from '../../api/index'
+var app = getApp();
 
 Page({
     data: {
@@ -14,7 +15,10 @@ Page({
             type2: 0,
             obj: {}
         },
-        loginStatus: wx.getStorageSync('loginStatus') || null
+        loginStatus: wx.getStorageSync('loginStatus') || null,
+        info: {
+            show: false,
+        },
     },
 
     onLoad(options) {
@@ -23,6 +27,7 @@ Page({
             ivId: options.id || null,
             loginStatus: wx.getStorageSync('loginStatus') || null
         })
+        wx.setStorageSync('ivId', options.id)
         this.getManNum()
     },
 
@@ -35,6 +40,7 @@ Page({
     },
 
     jieshou() {
+        app.globalData.leitingweb.track('click_accept')
         if (wx.getStorageSync('loginStatus')) {
             wx.navigateTo({
                 url: '/pages/index/index',
@@ -57,8 +63,11 @@ Page({
                 })
                 return
             }
-            
-  
+            this.setData({
+                info: {
+                    show: true
+                }
+            })
         })
     },
 })

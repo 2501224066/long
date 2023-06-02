@@ -43,23 +43,18 @@
         </view>
 
         <view class="txt6" wx:if="{{type === 6}}">
-            <view> 抽奖码【01234abcd456】被选中，</view>
-            <view> 恭喜您获得了XXX，</view>
+            <view> 抽奖码【{{obj.code}}】被选中，</view>
+            <view> 恭喜您获得了{{obj.title}}，</view>
             <view> 请前往填写收货信息，</view>
             <view> 后续官方人员将与您联系。</view>
         </view>
 
         <view class="txt7" wx:if="{{type === 7}}">
-            <image src="../../images/ma.png" mode="widthFix" style="width: 30%;margin: 0 auto 20rpx auto;"></image>
-            <view>长按扫码关注公众号</view>
-            <view>获取更多游戏福利和资讯 </view>
+            <image src="{{obj.qr || '../../images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
+            <view>长按扫码{{obj.title}}</view>
+            <view>获取更多游戏福利和资讯</view>
         </view>
 
-        <view class="txt7" wx:if="{{type === 8}}">
-            <image src="../../images/ma.png" mode="widthFix" style="width: 30%;margin: 0 auto 20rpx auto;"></image>
-            <view>长按扫码添加官方企业微信号</view>
-            <view>获取更多游戏福利和资讯 </view>
-        </view>
 
         <view class="txt9" wx:if="{{type === 9}}">
             <view>恭喜您，获得了以下奖励</view>

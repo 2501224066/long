@@ -1,6 +1,7 @@
 {
     "usingComponents": {
-        "alert": "/components/alert/alert"
+        "alert": "/components/alert/alert",
+        "info": "/components/info/info"
     },
     "navigationStyle": "custom"
 }

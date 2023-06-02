@@ -1,0 +1,6 @@
+<!--pages/share/share.wxml-->
+<view class="ma">
+    <image class="bg" mode="widthFix" src="../../images/bg2.png" style="width: 100%;z-index: -1;"></image>
+
+    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}" bind:dingyue="dingyue"></alert>
+</view>

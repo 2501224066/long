@@ -26,6 +26,13 @@
                     "query": "dycg=1",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/ma/ma",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

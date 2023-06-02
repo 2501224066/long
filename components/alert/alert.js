@@ -64,6 +64,18 @@ Component({
                     show: false
                 })
             }
+            if (this.data.type === 3) {
+                wx.navigateTo({
+                    url: '/pages/index/index',
+                })
+            }
+            if (this.data.type === 6) {
+                this.setData({
+                    type: 11,
+                    type2: 2
+                })
+                this.tabRight()
+            }
         },
 
         tabLeft: function () {

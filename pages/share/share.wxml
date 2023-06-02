@@ -2,6 +2,8 @@
 <view class="share">
     <image class="bg" mode="widthFix" src="../../images/{{loginStatus ? 'bg5' : 'bg4'}}.png" style="width: 100%;z-index: -1;"></image>
 
+    <info show="{{info.show}}"></info>
+
     <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}"></alert>
 
     <view class="c total" style="top: 45.8%;left: 0%; width: 100%;height: 2%;">

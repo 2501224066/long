@@ -7,12 +7,16 @@ import {
     getData,
     getLuckInfo,
     manNum,
-    invite
+    invite,
+    only,
+    config
 } from '../../api/index'
+var app = getApp();
 
 let i = 0
 let quan = 5
 let lock = false
+let firstLuck = 0
 
 Page({
     data: {
@@ -34,6 +38,8 @@ Page({
         luck: {},
         num: 0,
         manNum: 0,
+        config: {},
+        firstLuck: 0
     },
 
     onLoad(option) {
@@ -56,6 +62,15 @@ Page({
         this.getTodoList()
         this.getLuckList()
         this.getManNum()
+        this.getConfig()
+    },
+
+    getConfig() {
+        config().then(res => {
+            this.setData({
+                config: res.data
+            })
+        })
     },
 
     getManNum() {
@@ -70,41 +85,74 @@ Page({
         if (!this.data.loginStatus) return
         getData().then(res => {
             this.setData({
-                num: res.data.point
+                num: res.data.point,
             })
-        })
-    },
-
-    gongzhonghao() {
-        this.setData({
-            alert: {
-                show: true,
-                type: 7,
-                type2: 0
+            firstLuck = JSON.stringify(res.data.luck_info) !== '[]' ? firstLuck === 0 ? 1 : 2 : 0
+            if (firstLuck === 1) {
+                this.setData({
+                    alert: {
+                        show: true,
+                        type: 6,
+                        type2: 0,
+                        obj: {
+                            code: res.data.luck_info.luck_code,
+                            title: res.data.luck_info.luck_title
+                        }
+                    }
+                })
             }
         })
     },
 
-    weixin() {
+    guanzhu(e) {
+        app.globalData.leitingweb.track('click_media')
         this.setData({
             alert: {
                 show: true,
-                type: 8,
-                type2: 0
+                type: 7,
+                type2: 0,
+                obj: {
+                    qr: e.target.dataset.type === '1' ? this.data.config.wechat_image : this.data.config.workchat_image,
+                    title: e.target.dataset.type === '1' ? '官方公众号' : '官方企业微信号'
+                }
             }
         })
     },
 
     quwancheng(e) {
+       app.globalData.leitingweb.track('click_goFinish')
         if (e.target.dataset.status !== 1) {
             wx.showToast({
                 icon: "none",
                 title: '任务已完成或已结束'
             })
+            return
+        }
+        if (e.target.dataset.type === '3') {
+            only({
+                miss_id: e.target.dataset.id
+            }).then(res => {
+                this.getTodoList()
+                this.init()
+                if (e.target.dataset.qr.length) {
+                    this.setData({
+                        alert: {
+                            show: true,
+                            type: 7,
+                            type2: 0,
+                            obj: {
+                                qr: e.target.dataset.qr,
+                                title: e.target.dataset.title
+                            }
+                        }
+                    })
+                }
+            })
         }
     },
 
     kaishi() {
+    app.globalData.leitingweb.track('click_draw')
         if (lock) {
             wx.showToast({
                 icon: "none",
@@ -184,6 +232,7 @@ Page({
     },
 
     getInfo() {
+        app.globalData.leitingweb.track('click_order')
         this.setData({
             info: {
                 show: true
@@ -202,6 +251,7 @@ Page({
     },
 
     dingyue() {
+        app.globalData.leitingweb.track('click_subscribe')
         wx.requestSubscribeMessage({
             tmplIds: ['chIgRVBmZrBHvmDDr8oJ-WLLresqqDPK3SDRh5OrFQ0'],
             success(res) {}
@@ -240,12 +290,17 @@ Page({
         })
     },
 
+    yaoqingman() {
+        app.globalData.leitingweb.track('click_complete')
+    },
+
     onShareAppMessage() {
-        invite().then(res => {
+        app.globalData.leitingweb.track('click_invite')
+        return invite().then(res => {
             return {
-                title: '速来，真·金币免费送',
+                title: this.data.config.wechat_share_title,
                 path: `/page/index/index?id=${wx.getStorageSync('id')}&phone=${this.data.phone}`,
-                imageUrl: ""
+                imageUrl: this.data.config.wechat_share_image
             }
         })
     }

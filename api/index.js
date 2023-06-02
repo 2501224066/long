@@ -139,3 +139,28 @@ export function invite(data, repair = '') {
         data: data
     })
 }
+
+export function captcha(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/image/captcha' + repair,
+        data: data
+    })
+}
+
+export function only(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/miss/addPoint' + repair,
+        data: data
+    })
+}
+
+
+export function config(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/home/config' + repair,
+        data: data
+    })
+}

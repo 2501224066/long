@@ -1,9 +1,9 @@
 {
     "pages": [
         "pages/index/index",
-        "pages/logs/logs",
         "pages/share/share",
-        "pages/login/login"
+        "pages/login/login",
+        "pages/ma/ma"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -12,11 +12,5 @@
         "navigationBarTextStyle": "black"
     },
     "style": "v2",
-    "sitemapLocation": "sitemap.json",
-    "plugins": {
-        "myPlugin": {
-            "version": "1.0.4",
-            "provider": "wxb302e0fc8ab232b4"
-        }
-    }
+    "sitemapLocation": "sitemap.json"
 }

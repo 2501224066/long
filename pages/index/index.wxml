@@ -29,7 +29,7 @@
     <!-- 人员 -->
     <view class="c renyuan" style="top:21.2%;left: 0%; width: 100%;">
         <view wx:for="{{inviteList}}" wx:key="index">
-            <image class="tx1" src="{{item.wx_headimgurl || '../../images/touxiang.png'}}" mode="aspectFill"></image>
+            <image class="tx1" src="{{item.wx_headimgurl || '../../images/touxiang.png'}}" mode="aspectFill" bindtap="yaoqingman"></image>
         </view>
         <view wx:for="{{5 - inviteList.length}}" wx:key="index">
             <button open-type="share" class="ub">
@@ -47,7 +47,7 @@
             <view wx:if="{{index !== 4}}" class="lname">{{item.luck_title}}</view>
         </view>
     </view>
-    <view class="c num" style="top: 39.8%;left: 46.7%;width: 12px;text-align: center;">{{num}}</view>
+    <view class="c num" style="top: 39.87%;left: 46.7%;width: 12px;text-align: center;">{{num}}</view>
 
     <!-- 每日 -->
     <view class="c item" style="top:53.2%;left: 0; width: 100%;">
@@ -64,7 +64,11 @@
         <view style="display: flex;align-items: center;">
             <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/{{item.status === 1 ? 'quwancheng' : item.status === 2 ? 'yiwancheng' : 'jieshu'}}.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
+        <button open-type="share" wx:if="{{item.status === 1}}" >
+            <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+        </button>
+        <image wx:if="{{item.status === 2}}" class="wc" src="../../images/yiwancheng.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
+        <image wx:if="{{item.status === 3}}" class="wc" src="../../images/jieshu.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
     </view>
 
     <!-- 单次 -->
@@ -73,12 +77,12 @@
         <view style="display: flex;align-items: center;">
             <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/{{item.status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
+        <image class="wc" src="../../images/{{item.status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-qr="{{item.qrcode}}" data-title="{{item.title}}" data-type="3" data-status="{{item.status}}"  data-id="{{item.id}}"></image>
     </view>
 
-    <view class="c" style="bottom:1.5%;left: 18%; width: 28%;height: 4.8%;" bindtap="gongzhonghao"></view>
+    <view class="c" style="bottom:1.5%;left: 18%; width: 28%;height: 4.8%;" bindtap="guanzhu" data-type="1"></view>
 
-    <view class="c" style="bottom:1.5%;left: 54%; width: 28%;height: 4.8%;" bindtap="weixin"></view>
+    <view class="c" style="bottom:1.5%;left: 54%; width: 28%;height: 4.8%;" bindtap="guanzhu" data-type="2"></view>
 
     <view wx:if="{{!loginStatus}}" class="mask" bindtap="getInfo"></view>
 </view>
