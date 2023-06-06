@@ -25,10 +25,15 @@ Page({
         this.setData({
             ivPhone: options.phone || null,
             ivId: options.id || null,
+        })
+        if (options.id) wx.setStorageSync('ivId', options.id)
+        this.getManNum()
+    },
+
+    onShow() {
+        this.setData({
             loginStatus: wx.getStorageSync('loginStatus') || null
         })
-        wx.setStorageSync('ivId', options.id)
-        this.getManNum()
     },
 
     getManNum() {

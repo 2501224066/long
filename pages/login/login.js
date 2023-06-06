@@ -7,7 +7,7 @@ import {
 
 Page({
     data: {
-        phone: 18827335317,
+        phone: null,
         code: null,
         code1: null,
         code2: null,
@@ -37,6 +37,18 @@ Page({
                 captcha: res.data.base64_image,
                 captchaKey: res.data.key
             })
+        })
+    },
+
+    xy1() {
+        wx.navigateTo({
+            url: '/pages/link/link?src=https://www.leiting.com/terrace/mobile/news/news_detail_ff80808171a5bad00171a64e53870006.html',
+        })
+    },
+
+    xy2() {
+        wx.navigateTo({
+            url: '/pages/link/link?src=https://www.leiting.com/terrace/news/news_detail_ff8080816f6510d4016f9e532924003e.html',
         })
     },
 

@@ -12,7 +12,7 @@
         <image src="../../images/qsyy.png" mode="widthFix"></image>
     </view>
 
-    <view class="c tel" style="top: 55.4%;left: 11%; width: 46%;">
+    <view class="c tel" style="top: 55.7%;left: 11%; width: 46%;">
         {{ivPhone}}
     </view>
 
