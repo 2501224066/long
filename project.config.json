@@ -10,7 +10,7 @@
         "include": []
     },
     "setting": {
-        "urlCheck": true,
+        "urlCheck": false,
         "es6": true,
         "enhance": true,
         "postcss": true,
@@ -49,9 +49,13 @@
         "useStaticServer": true
     },
     "compileType": "miniprogram",
-    "libVersion": "2.19.4",
+    "libVersion": "2.25.4",
     "appid": "wx99bb76139850af91",
     "projectname": "project",
+    "editorSetting": {
+        "tabIndent": "insertSpaces",
+        "tabSize": 4
+    },
     "condition": {
         "search": {
             "list": []
@@ -71,9 +75,5 @@
         "miniprogram": {
             "list": []
         }
-    },
-    "editorSetting": {
-        "tabIndent": "insertSpaces",
-        "tabSize": 4
     }
 }

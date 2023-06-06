@@ -15,10 +15,9 @@ Page({
             type2: 0,
             obj: {}
         },
-        loginStatus: wx.getStorageSync('loginStatus') || null,
         info: {
             show: false,
-        },
+        }
     },
 
     onLoad(options) {
@@ -47,7 +46,7 @@ Page({
     jieshou() {
         app.globalData.leitingweb.track('click_accept')
         if (wx.getStorageSync('loginStatus')) {
-            wx.navigateTo({
+            wx.redirectTo({
                 url: '/pages/index/index',
             })
             return

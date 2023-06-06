@@ -21,10 +21,10 @@ Page({
             type2: 0,
             obj: {}
         },
+        sendTime: 0
     },
 
     onLoad() {
-        this.getCode()
         this.getCaptcha()
         this.setData({
             shareCode: wx.getStorageSync('ivId') || 0
@@ -96,6 +96,13 @@ Page({
     },
 
     ma() {
+        if (this.data.sendTime > 0) {
+            wx.showToast({
+                icon: "none",
+                title: '请稍等片刻',
+            })
+            return
+        }
         if (!this.phoneYZ()) return
         if (!this.data.code1) {
             wx.showToast({
@@ -119,8 +126,22 @@ Page({
                     icon: "success",
                     title: '发送成功',
                 })
+                this.setData({
+                    sendTime: 60
+                })
+                this.setSendTime()
             }
         })
+    },
+
+    setSendTime() {
+        if (this.data.sendTime === 0) return
+        setTimeout(() => {
+            this.setData({
+                sendTime: this.data.sendTime - 1
+            })
+            this.setSendTime()
+        }, 1000)
     },
 
     denglu() {
@@ -159,28 +180,33 @@ Page({
     },
 
     denglu2() {
-        const userInfo = wx.getStorageSync('userInfo')
-        login({
-            "mobile": this.data.phone,
-            "share_user_id": this.data.shareCode,
-            "code": this.data.code,
-            "wx_nickname": userInfo.nickname,
-            "wx_headimgurl": userInfo.avatarUrl
-        }).then(res => {
-            wx.setStorageSync('phone', this.data.phone.toString())
-            wx.setStorageSync('loginStatus', true)
-            wx.setStorageSync('userId', res.data.id)
-            wx.setStorageSync('token', res.data.token)
-            wx.removeStorageSync('ivId')
-            wx.showToast({
-                icon: 'success',
-                title: '登录成功'
-            })
-            setTimeout(() => {
-                wx.redirectTo({
-                    url: "/pages/index/index?dycg=1",
+        let that = this
+        wx.login({
+            success(e) {
+                const userInfo = wx.getStorageSync('userInfo')
+                login({
+                    "mobile": that.data.phone,
+                    "share_user_id": that.data.shareCode,
+                    "code": e.code,
+                    "wx_nickname": userInfo.nickname,
+                    "wx_headimgurl": userInfo.avatarUrl
+                }).then(res => {
+                    wx.setStorageSync('phone', that.data.phone.toString())
+                    wx.setStorageSync('loginStatus', true)
+                    wx.setStorageSync('userId', res.data.id)
+                    wx.setStorageSync('token', res.data.token)
+                    wx.removeStorageSync('ivId')
+                    wx.showToast({
+                        icon: 'success',
+                        title: '登录成功'
+                    })
+                    setTimeout(() => {
+                        wx.redirectTo({
+                            url: "/pages/index/index?dycg=1",
+                        })
+                    }, 1000)
                 })
-            }, 1000)
+            }
         })
     }
 })
