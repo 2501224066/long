@@ -315,9 +315,8 @@ Page({
     invite()
     return {
       title: this.data.config.wechat_share_title,
-      path: `/pages/share/share?id=${wx.getStorageSync('id')}&phone=${this.data.phone}`,
+      path: `/pages/share/share?id=${wx.getStorageSync('userId')}&phone=${this.data.phone}`,
       imageUrl: this.data.config.wechat_share_image
-
     }
   }
 })

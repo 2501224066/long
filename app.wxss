@@ -1,14 +1,34 @@
 /**app.wxss**/
 .page {
-  background: #000;
+    background: #000;
 }
 
 .c {
-  /**background: rgba(0, 0, 0, 0.4);**/
-  position: absolute;
+    /**background: rgba(0, 0, 0, 0.4);**/
+    position: absolute;
 }
 
 
 image {
-  display: block;
+    display: block;
+}
+
+.fz {
+    position: fixed;
+    left: 2%;
+    top: 6%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(250, 250, 250, .9);
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 40rpx;
+    border: 4rpx solid #ddd
+}
+
+.fz image {
+    width: 40rpx;
+    margin: 0 auto;
 }

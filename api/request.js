@@ -31,6 +31,7 @@ const go = function (obj) {
             icon: 'none',
             title: res.data.msg
           })
+          resolve(res.data)
         } else {
           resolve(res.data)
         }

@@ -95,6 +95,12 @@ Page({
         }
     },
 
+    toHome() {
+        wx.redirectTo({
+            url: "/pages/index/index",
+        })
+    },
+
     ma() {
         if (this.data.sendTime > 0) {
             wx.showToast({
@@ -107,7 +113,7 @@ Page({
         if (!this.data.code1) {
             wx.showToast({
                 icon: "none",
-                title: '图形验证失败',
+                title: '请输入图形验证码',
             })
             return
         }
@@ -116,11 +122,12 @@ Page({
             key: this.data.captchaKey,
             captcha_code: this.data.code1
         }).then(res => {
+            console.log(res.code)
             if (res.code === -1) {
-                wx.showToast({
-                    icon: "error",
-                    title: '发送失败',
+                this.setData({
+                    code1: null
                 })
+                this.getCaptcha()
             } else {
                 wx.showToast({
                     icon: "success",
@@ -156,7 +163,7 @@ Page({
         if (!this.data.code1) {
             wx.showToast({
                 icon: "none",
-                title: '图形验证失败',
+                title: '请输入图形验证码',
             })
             return
         }
@@ -196,15 +203,27 @@ Page({
                     wx.setStorageSync('userId', res.data.id)
                     wx.setStorageSync('token', res.data.token)
                     wx.removeStorageSync('ivId')
-                    wx.showToast({
-                        icon: 'success',
-                        title: '登录成功'
+                    if (res.data.pop_up === 2) {
+                        wx.redirectTo({
+                            url: "/pages/share/share",
+                        })
+                        return
+                    }
+                    that.setData({
+                        alert: {
+                            show: true,
+                            type: 8,
+                            type2: 0,
+                            obj: {
+                                txt: ['登录成功', '当前邀请人数已满5人'][res.data.pop_up || 0]
+                            }
+                        }
                     })
                     setTimeout(() => {
                         wx.redirectTo({
                             url: "/pages/index/index?dycg=1",
                         })
-                    }, 1000)
+                    }, 2000)
                 })
             }
         })
