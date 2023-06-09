@@ -50,7 +50,7 @@
     </view>
 
     <view class="txt7" wx:if="{{type === 7}}">
-      <image src="{{obj.qr || '../../images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
+      <image bindtap="preview" data-src="{{obj.qr || '../../images/jitui.png'}}" src="{{obj.qr || '../../images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
       <view>长按扫码{{obj.title}}</view>
       <view>获取更多游戏福利和资讯</view>
     </view>
@@ -61,7 +61,7 @@
 
     <view class="txt9" wx:if="{{type === 9}}">
       <view>恭喜您，获得了以下奖励</view>
-      <image src="{{obj.luck_images}}" mode="widthFix" style="width: 30%;margin: 20rpx auto 0 auto;"></image>
+      <image src="{{obj.luck_images}}" mode="widthFix" style="width: 120rpx;height: 120rpx;overflow: hidden;margin: 20rpx auto 0 auto;"></image>
       <view style="margin-bottom: 20rpx;">{{obj.luck_title}}</view>
       <view>可在【奖励背包】中查看获得的奖励 </view>
     </view>
@@ -109,7 +109,7 @@
             {{region[0]}}-{{region[1]}}-{{region[2]}}
           </view>
         </picker>
-        <textarea style="position: absolute;top: 51%;left: 28%; width: 67%;height: 18% ;" disable-default-padding="true" auto-focus="true" bindinput="setState" value="{{address}}" data-name="address" type="number" maxlength="6" placeholder="街道、楼梯号等" placeholder-class="placeholder" />
+        <textarea style="position: absolute;top: 51%;left: 28%; width: 67%;height: 18% ;" disable-default-padding="true" auto-focus="true" bindinput="setState" value="{{address}}" data-name="address" type="number" placeholder="街道、楼梯号等" placeholder-class="placeholder" />
       </view>
     </view>
 

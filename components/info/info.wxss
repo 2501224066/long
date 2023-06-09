@@ -2,32 +2,22 @@
     position: fixed;
     left: 0;
     top: 0;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    justify-content: center;
     width: 100%;
     height: 100vh;
-    z-index: 998;
+    background: #fff;
+    z-index: 1000;
 }
 
-.info .bg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, .8);
-}
+
 
 .info .box {
     position: relative;
     text-align: center;
     background: #fff;
-    width: 70%;
-    margin: 0 auto;
+    width: 100%;
     border-radius: 2%;
-    padding: 10% 0 40rpx 0;
+    padding: 10vh 0;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,10 +25,10 @@
 }
 
 .info .box .avatar {
-    width: 100rpx;
-    height: 100rpx;
+    width: 150rpx;
+    height: 150rpx;
     padding: 0;
-    margin-bottom: 40rpx;
+    margin-bottom: 10vh;
 }
 
 .info .box .nickname {
@@ -50,7 +40,8 @@
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }
-.info .close{
+
+.info .close {
     width: 50rpx;
     height: 50rpx;
     display: flex;
@@ -62,4 +53,16 @@
     color: #fff;
     z-index: 999;
     margin: 80rpx auto;
+}
+
+.info .di {
+    position: absolute;
+    bottom: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.info .di button {
+    width: 40%;
 }

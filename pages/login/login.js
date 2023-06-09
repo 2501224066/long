@@ -122,7 +122,6 @@ Page({
             key: this.data.captchaKey,
             captcha_code: this.data.code1
         }).then(res => {
-            console.log(res.code)
             if (res.code === -1) {
                 this.setData({
                     code1: null
@@ -221,7 +220,7 @@ Page({
                     })
                     setTimeout(() => {
                         wx.redirectTo({
-                            url: "/pages/index/index?dycg=1",
+                            url: "/pages/index/index",
                         })
                     }, 2000)
                 })

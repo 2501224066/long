@@ -19,7 +19,7 @@ const go = function (obj) {
         } else if (res.data.code === 403) {
           wx.showToast({
             icon: 'none',
-            title: '登录已过期'
+            title: '未登录或登录已过期'
           })
           setTimeout(() => {
             wx.navigateTo({

@@ -1,5 +1,6 @@
 {
     "usingComponents": {
         "alert": "/components/alert/alert"
-    }
+    },
+    "navigationStyle": "custom"
 }

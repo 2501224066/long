@@ -2,5 +2,6 @@
     "usingComponents": {
         "alert": "/components/alert/alert",
         "info": "/components/info/info"
-    }
+    },
+    "navigationBarTitleText": "飞吧龙骑士手游"
 }

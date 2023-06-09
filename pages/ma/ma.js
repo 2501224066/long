@@ -16,6 +16,12 @@ Page({
         this.getConfig()
     },
 
+    toHome() {
+        wx.redirectTo({
+            url: "/pages/index/index",
+        })
+    },
+
     getConfig() {
         config().then(res => {
             this.setData({

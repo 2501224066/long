@@ -10,13 +10,16 @@
 
     <input class="c" style="top: 44%;left: 34%; width: 52%;height: 4%;" bindinput="setState" value="{{phone}}" data-name="phone" type="number" maxlength="11" placeholder="输入有效手机号" placeholder-class="placeholder" />
 
-    <input class="c" readonly="true" style="top: 50.1%;left: 34%; width: 30%;height: 4%;" maxlength="4" bindinput="setState" value="{{code1}}" data-name="code1" placeholder="输入图形验证码" placeholder-class="placeholder" />
+    <input class="c" readonly="true" style="top: 50.1%;left: 34%; width: 30%;height: 4%;" maxlength="5" bindinput="setState" value="{{code1}}" data-name="code1" placeholder="输入图形验证码" placeholder-class="placeholder" />
 
-    <input class="c" style="top: 56.1%;left: 34%; width: 30%;height: 4%;" type="number" bindinput="setState" value="{{code2}}" data-name="code2" maxlength="6" placeholder="输入短信验证码{{sendTime > 0 ? '('+sendTime+')' : ''}}" placeholder-class="placeholder" />
+    <input class="c" style="top: 56.1%;left: 34%; width: 30%;height: 4%;" type="number" bindinput="setState" value="{{code2}}" data-name="code2" maxlength="6" placeholder="输入短信验证码" placeholder-class="placeholder" />
 
     <image class="c" style="top: 50.4%;left: 62%; width: 26%;" src="{{captcha}}" mode="widthFix" bindtap="getCaptcha"></image>
 
     <view class="c" style="top: 56%;left: 65%; width: 23%;height: 4%;" bindtap="ma"></view>
+
+    <image wx:if="{{sendTime > 0}}" class="c" style="top: 55.9%;left: 65%; width: 23%;height: 4.5%;" src="../../images/huise.png" mode="aspectFit" bindtap="getCaptcha"></image>
+    <view wx:if="{{sendTime > 0}}" class="c" style="top: 56.8%;left: 65%; width: 23%;height: 4.5%;text-align: center;font-size: 28rpx">已发送{{sendTime > 0 ? '('+sendTime+')' : ''}}</view>
 
     <view class="c" style="top: 62%;left: 27%; width: 46%;height: 9%;" bindtap="denglu"></view>
 

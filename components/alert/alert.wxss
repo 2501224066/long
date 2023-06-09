@@ -97,11 +97,7 @@
 }
 
 .code {
-  color: #fdf2a9;
-  font-size: 29rpx;
-  font-weight: bold;
-  font-style: italic;
-  text-shadow: 0 1px #000, 1px 0 #000, -1px 0 #000, 0 -1px #000;
+  font-size: 24rpx;
 }
 
 .txt6 {
@@ -156,7 +152,6 @@
   width: 66%;
   height: 60%;
   margin-left: 15%;
-  font-size: 28rpx;
   font-size: 22rpx;
 }
 
@@ -165,7 +160,7 @@
 }
 
 .jl {
-  width: 106%;
+  width: 100%;
 }
 
 .list {
