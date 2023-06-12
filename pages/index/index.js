@@ -10,6 +10,7 @@ import {
     invite,
     only,
     config,
+    subscribe
 } from '../../api/index'
 var app = getApp();
 
@@ -40,7 +41,7 @@ Page({
         manNum: 0,
         config: {},
         firstLuck: 0,
-        dingyue: wx.getStorageSync('dingyue') || false,
+        dingyue: 0,
     },
 
     onLoad() {
@@ -104,6 +105,7 @@ Page({
         getData().then(res => {
             this.setData({
                 num: res.data.point,
+                dingyue: res.data.is_sub
             })
             firstLuck = JSON.stringify(res.data.luck_info) !== '[]' ? firstLuck === 0 ? 1 : 2 : 0
             if (firstLuck === 1) {
@@ -251,6 +253,12 @@ Page({
 
     getInfo() {
         app.globalData.leitingweb.track('click_order')
+        if (wx.getStorageSync('userInfo')) {
+            wx.navigateTo({
+                url: '/pages/login/login',
+            })
+            return
+        }
         this.setData({
             info: {
                 show: true
@@ -273,14 +281,21 @@ Page({
             this.getInfo()
             return
         }
+        if (this.data.dingyue === 1) {
+            wx.showToast({
+                icon: "none",
+                title: '您已完成订阅',
+            })
+            return
+        }
         app.globalData.leitingweb.track('click_subscribe')
         let that = this
         wx.requestSubscribeMessage({
             tmplIds: ['chIgRVBmZrBHvmDDr8oJ-dcOg5VKwnk1wFvevjirQkA', 'chIgRVBmZrBHvmDDr8oJ-WLLresqqDPK3SDRh5OrFQ0', 'DqFoX0vAPXAF5_aZz8zmbFgk-7tDyQMm0WZvcvcnswk'],
             success(res) {
-                wx.setStorageSync('dingyue', true)
+                subscribe()
                 that.setData({
-                    dingyue: true
+                    dingyue: 1
                 })
             },
             fail(e) {
@@ -291,14 +306,27 @@ Page({
 
     beibao() {
         getLuckInfo().then(res => {
-            this.setData({
-                alert: {
-                    show: true,
-                    type: 11,
-                    type2: 0,
-                    obj: res.data
-                }
-            })
+            if (res.data.list.length) {
+                this.setData({
+                    alert: {
+                        show: true,
+                        type: 11,
+                        type2: 0,
+                        obj: res.data
+                    }
+                })
+            } else {
+                this.setData({
+                    alert: {
+                        show: true,
+                        type: 8,
+                        type2: 0,
+                        obj: {
+                            txt: '暂无奖励'
+                        }
+                    }
+                })
+            }
         })
     },
 
@@ -311,7 +339,6 @@ Page({
             wx.removeStorageSync('loginStatus')
             wx.removeStorageSync('id')
             wx.removeStorageSync('token')
-            wx.removeStorageSync('userInfo')
             wx.removeStorageSync('phone')
             setTimeout(() => {
                 wx.redirectTo({
@@ -325,12 +352,13 @@ Page({
         app.globalData.leitingweb.track('click_complete')
     },
 
-    onShareAppMessage() {
+    onShareAppMessage(e) {
         let obj = {
             title: this.data.config.wechat_share_title,
             path: `/pages/share/share?id=${wx.getStorageSync('userId')}&phone=${this.data.phone}`,
             imageUrl: this.data.config.wechat_share_image,
         }
+        if (!this.data.loginStatus && e.from === "menu") return obj
 
         if (!this.data.loginStatus) {
             this.getInfo()
@@ -340,7 +368,7 @@ Page({
         }
 
         app.globalData.leitingweb.track('click_invite')
-        invite()
+        if (this.data.loginStatus) invite()
         return obj
     }
 })

@@ -4,41 +4,55 @@
     top: 0;
     width: 100%;
     height: 100vh;
-    background: #fff;
     z-index: 1000;
 }
 
 
+.info .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, .7);
+}
 
 .info .box {
-    position: relative;
-    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     background: #fff;
     width: 100%;
     border-radius: 2%;
-    padding: 10vh 0;
+    padding: 2vh 6% 4vh 6%;
     box-sizing: border-box;
+}
+
+.info .box .title {
+    font-weight: bold;
+    font-size: 36rpx;
+    border-bottom: 2rpx solid #ddd;
+    padding: 25rpx 0;
+    box-sizing: border-box;
+}
+
+.info .box .cc {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding: 35rpx 0;
+    border-bottom: 2rpx solid #ddd;
 }
 
 .info .box .avatar {
-    width: 150rpx;
-    height: 150rpx;
+    width: 120rpx;
+    height: 120rpx;
     padding: 0;
-    margin-bottom: 10vh;
 }
 
 .info .box .nickname {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 20rpx 30rpx;
+    flex: 1;
+    padding-left: 20rpx;
     box-sizing: border-box;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
 }
 
 .info .close {
@@ -56,13 +70,13 @@
 }
 
 .info .di {
-    position: absolute;
-    bottom: 10vh;
-    width: 100%;
+    margin-top: 30rpx;
     display: flex;
     justify-content: space-evenly;
 }
 
 .info .di button {
-    width: 40%;
+    width: 35%;
+    font-size: 28rpx;
+    padding: 10rpx 0;
 }

@@ -171,3 +171,11 @@ export function codeLogin(data, repair = '') {
         data: data
     })
 }
+
+export function subscribe(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/user/subscribe' + repair,
+        data: data
+    })
+}

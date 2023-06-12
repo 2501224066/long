@@ -6,7 +6,7 @@
 
     <info show="{{info.show}}"></info>
 
-    <view wx:if="{{!loginStatus}}" class="c" style="top: 0.6%;right: 1.8%; width: 30%;height: 0.8%;font-size: 28rpx;text-align: right;">你好，请<span style="color: #f6e14d;">【登录】</span></view>
+    <view wx:if="{{!loginStatus}}" class="c" style="top: 0.6%;right: 1.8%; width: 30%;height: 0.8%;font-size: 28rpx;text-align: right;" bindtap="getInfo">你好，请<span style="color: #f6e14d;">【登录】</span></view>
     <view wx:else class="c" style="top: 0.6%;right: 1.8%; width: 50%;height: 0.8%;font-size: 28rpx;text-align: right;" bindtap="jiebang">你好，{{phone}}<span style="color: #f6e14d;">【解绑】</span></view>
 
     <view class="c" style="top: 4.5%;right: 0; width: 7%;height: 2.6%;" bindtap="guize"></view>
@@ -25,7 +25,7 @@
     </view>
 
     <view class="c" style="top:24.3%;left: 39%; width: 22%;height: 1.2%;" bindtap="dingyue">
-        <image src="../../images/{{dingyue ? 'yidingyue' : 'dingyue'}}.png" mode="widthFix" style="width: 100%"></image>
+        <image src="../../images/{{dingyue === 1 ? 'yidingyue' : 'dingyue'}}.png" mode="widthFix" style="width: 100%"></image>
     </view>
 
     <!-- 人员 -->

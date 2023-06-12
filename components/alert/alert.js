@@ -131,13 +131,34 @@ Component({
 
         tijiao: function () {
             if (this.data.type === 11) {
+                if (this.data.name === null) {
+                    wx.showToast({
+                        icon: "none",
+                        title: '请输入收件人',
+                    })
+                    return
+                }
+                if (this.data.mobile === null) {
+                    wx.showToast({
+                        icon: "none",
+                        title: '请输入手机号码',
+                    })
+                    return
+                }
+                if (this.data.address === null) {
+                    wx.showToast({
+                        icon: "none",
+                        title: '请输入详细地址',
+                    })
+                    return
+                }
                 setAddress({
-                    "consignee": this.data.name, //收货人
-                    "mobile": this.data.phone, //收货人
-                    "province": this.data.region[0], //收货人
-                    "city": this.data.region[1], //收货人
-                    "area": this.data.region[2], //收货人
-                    "address": this.data.address, //收货人
+                    "consignee": this.data.name,
+                    "mobile": this.data.phone,
+                    "province": this.data.region[0],
+                    "city": this.data.region[1],
+                    "area": this.data.region[2],
+                    "address": this.data.address,
                 }).then(res => {
                     wx.showToast({
                         icon: "success",

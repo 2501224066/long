@@ -52,18 +52,6 @@ Page({
         })
     },
 
-    getCode() {
-        let that = this
-        // 获取code
-        wx.login({
-            success(e) {
-                that.setData({
-                    code: e.code
-                })
-            }
-        })
-    },
-
     agree() {
         this.setData({
             agree: !this.data.agree
@@ -167,64 +155,69 @@ Page({
             return
         }
         let that = this
-        bindOther({
-            mobile: this.data.phone,
-            mobile_code: this.data.code2
-        }).then(res => {
-            if (res.code === 703) {
-                this.setData({
-                    alert: {
-                        show: true,
-                        type: 1,
-                        type2: 0
+        wx.login({
+            success(e) {
+                bindOther({
+                    mobile: that.data.phone,
+                    mobile_code: that.data.code2,
+                    code: e.code
+                }).then(res => {
+                    if (res.code === -1) {
+                        wx.showToast({
+                            icon: "none",
+                            title: res.msg,
+                        })
+                    }else if (res.code === 703) {
+                        that.setData({
+                            alert: {
+                                show: true,
+                                type: 1,
+                                type2: 0
+                            }
+                        })
+                    } else {
+                        that.denglu2()
                     }
                 })
-            } else {
-                that.denglu2()
             }
         })
     },
 
     denglu2() {
         let that = this
-        wx.login({
-            success(e) {
-                const userInfo = wx.getStorageSync('userInfo')
-                login({
-                    "mobile": that.data.phone,
-                    "share_user_id": that.data.shareCode,
-                    "code": e.code,
-                    "wx_nickname": userInfo.nickname,
-                    "wx_headimgurl": userInfo.avatarUrl
-                }).then(res => {
-                    wx.setStorageSync('phone', that.data.phone.toString())
-                    wx.setStorageSync('loginStatus', true)
-                    wx.setStorageSync('userId', res.data.id)
-                    wx.setStorageSync('token', res.data.token)
-                    wx.removeStorageSync('ivId')
-                    if (res.data.pop_up === 2) {
-                        wx.redirectTo({
-                            url: "/pages/share/share",
-                        })
-                        return
-                    }
-                    that.setData({
-                        alert: {
-                            show: true,
-                            type: 8,
-                            type2: 0,
-                            obj: {
-                                txt: ['登录成功', '当前邀请人数已满5人'][res.data.pop_up || 0]
-                            }
-                        }
-                    })
-                    setTimeout(() => {
-                        wx.redirectTo({
-                            url: "/pages/index/index",
-                        })
-                    }, 2000)
+        const userInfo = wx.getStorageSync('userInfo')
+        login({
+            "mobile": that.data.phone,
+            "share_user_id": that.data.shareCode,
+            "wx_nickname": userInfo.nickname,
+            "wx_headimgurl": userInfo.avatarUrl
+        }).then(res => {
+            wx.setStorageSync('phone', that.data.phone.toString())
+            wx.setStorageSync('loginStatus', true)
+            wx.setStorageSync('userId', res.data.id)
+            wx.setStorageSync('token', res.data.token)
+            wx.removeStorageSync('ivId')
+            if (res.data.pop_up === 2) {
+                wx.redirectTo({
+                    url: "/pages/share/share",
                 })
+                return
             }
+            that.setData({
+                alert: {
+                    show: true,
+                    type: 8,
+                    type2: 0,
+                    obj: {
+                        txt: ['登录成功', '当前邀请人数已满5人'][res.data.pop_up || 0]
+                    }
+                }
+            })
+            setTimeout(() => {
+                wx.redirectTo({
+                    url: "/pages/index/index",
+                })
+            }, 2000)
         })
     }
 })

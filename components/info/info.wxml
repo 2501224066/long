@@ -1,17 +1,24 @@
 <view class="info" wx:if="{{show}}">
-    <view class="box">
-        <button class="avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-            <image class="avatar" src="{{avatarUrl}}"></image>
-        </button>
-
-        <view class="nickname">
-            <span style="width: 20%">昵称</span>
-            <input style="margin-left:15%;  flex: 1;" type="nickname" bindinput="setState" value="{{nickname}}" data-name="nickname" placeholder="请输入昵称" />
-        </view>
+    <view class="bg">
     </view>
 
-    <view class="di">
-        <button size="mini" bindtap="queding" bindtap="close">取消</button>
-        <button type="primary" size="mini" bindtap="queding">确定</button>
+    <view class="box">
+        <view class="title">获取使用您的头像和昵称</view>
+
+        <view class="cc">
+            <button class="avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                <image class="avatar" src="{{avatarUrl}}"></image>
+            </button>
+
+            <view class="nickname">
+                <view style="font-size: 32rpx;font-weight: bold;margin-bottom: 10rpx;">微信昵称</view>
+                <input type="nickname" bindinput="setState" value="{{nickname}}" data-name="nickname" placeholder="请输入昵称" />
+            </view>
+        </view>
+
+        <view class="di">
+            <button size="mini" bindtap="queding" bindtap="close">取消</button>
+            <button type="primary" size="mini" bindtap="queding">确定</button>
+        </view>
     </view>
 </view>
