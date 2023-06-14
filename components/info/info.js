@@ -40,6 +40,8 @@ Component({
     queding: function () {
       if (!this.data.nickname) {
         wx.showToast({
+                duration: 2000,
+    	mask: true,
           icon: "none",
           title: '请输入昵称',
         })
@@ -47,6 +49,8 @@ Component({
       }
       if (this.data.avatarUrl === defaultAvatarUrl) {
         wx.showToast({
+                duration: 2000,
+    	mask: true,
           icon: "none",
           title: '请上传头像',
         })

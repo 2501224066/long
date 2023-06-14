@@ -22,6 +22,8 @@ const go = function (obj) {
                     resolve(res.data)
                 } else if (res.data.code === 403) {
                     wx.showToast({
+                duration: 2000,
+    	mask: true,
                         icon: 'none',
                         title: '未登录或登录已过期'
                     })
@@ -32,6 +34,8 @@ const go = function (obj) {
                     }, 1000)
                 } else if (res.data.code === -1) {
                     wx.showToast({
+                duration: 2000,
+    	mask: true,
                         icon: 'none',
                         title: res.data.msg
                     })
@@ -44,6 +48,8 @@ const go = function (obj) {
                 wx.hideLoading()
                 reject()
                 wx.showToast({
+                duration: 2000,
+    	mask: true,
                     icon: 'none',
                     title: '网络请求超时，请退出重试',
                     duration: 4000,

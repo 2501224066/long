@@ -44,16 +44,13 @@ Page({
         dingyue: 0,
     },
 
-    onLoad() {
+    onShow() {
         const phone = wx.getStorageSync('phone')
         this.setData({
             loginStatus: wx.getStorageSync('loginStatus') || false,
-            phone: phone ? (phone.substr(0, 3) + '****' + phone.substr(3, 4)) : null
+            phone: phone ? (phone.substr(0, 3) + '****' + phone.substr(7, 4)) : null
         })
         this.init()
-    },
-
-    onShow() {
         this.getInviteList()
         this.getTodoList()
         this.getLuckList()
@@ -76,6 +73,7 @@ Page({
             this.setData({
                 config: res.data
             })
+            wx.setStorageSync('luckRule', res.data.luck_rule)
         })
     },
 
@@ -141,8 +139,10 @@ Page({
 
     quwancheng(e) {
         app.globalData.leitingweb.track('click_goFinish')
-        if (e.target.dataset.status !== 1) {
+        if (e.target.dataset.status !== '3') {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: "none",
                 title: e.target.dataset.status === 2 ? '任务已完成' : '任务已结束'
             })
@@ -175,6 +175,8 @@ Page({
         app.globalData.leitingweb.track('click_draw')
         if (lock) {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: "none",
                 title: '抽奖中,请勿重复操作',
             })
@@ -271,7 +273,10 @@ Page({
             alert: {
                 show: true,
                 type: 4,
-                type2: 0
+                type2: 0,
+                obj: {
+                    txt: this.data.config.rule
+                }
             }
         })
     },
@@ -283,6 +288,8 @@ Page({
         }
         if (this.data.dingyue === 1) {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: "none",
                 title: '您已完成订阅',
             })
@@ -333,6 +340,8 @@ Page({
     jiebang() {
         loginOut().then(res => {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: 'success',
                 title: '解绑成功',
             })
@@ -366,6 +375,7 @@ Page({
                 rejects()
             })
         }
+        if (this.config.miss_status !== 1) this.unyaoqing()
 
         app.globalData.leitingweb.track('click_invite')
         if (this.data.loginStatus) invite()

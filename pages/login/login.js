@@ -59,8 +59,10 @@ Page({
     },
 
     phoneYZ() {
-        if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(this.data.phone))) {
+        if (!(/^1[0-9][0-9]\d{4,8}$/.test(this.data.phone))) {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: "none",
                 title: '请输入正确的手机号码',
             })
@@ -92,6 +94,8 @@ Page({
     ma() {
         if (this.data.sendTime > 0) {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: "none",
                 title: '请稍等片刻',
             })
@@ -100,6 +104,8 @@ Page({
         if (!this.phoneYZ()) return
         if (!this.data.code1) {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: "none",
                 title: '请输入图形验证码',
             })
@@ -117,6 +123,8 @@ Page({
                 this.getCaptcha()
             } else {
                 wx.showToast({
+                    duration: 2000,
+                    mask: true,
                     icon: "success",
                     title: '发送成功',
                 })
@@ -141,6 +149,8 @@ Page({
     denglu() {
         if (!this.data.agree) {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: 'none',
                 title: '请先同意相关条款和协议'
             })
@@ -149,6 +159,8 @@ Page({
         if (!this.phoneYZ()) return
         if (!this.data.code1) {
             wx.showToast({
+                duration: 2000,
+                mask: true,
                 icon: "none",
                 title: '请输入图形验证码',
             })
@@ -164,10 +176,12 @@ Page({
                 }).then(res => {
                     if (res.code === -1) {
                         wx.showToast({
+                            duration: 2000,
+                            mask: true,
                             icon: "none",
                             title: res.msg,
                         })
-                    }else if (res.code === 703) {
+                    } else if (res.code === 703) {
                         that.setData({
                             alert: {
                                 show: true,
@@ -203,13 +217,19 @@ Page({
                 })
                 return
             }
+            if (res.data.pop_up === 0) {
+                wx.redirectTo({
+                    url: "/pages/index/index",
+                })
+                return
+            }
             that.setData({
                 alert: {
                     show: true,
                     type: 8,
                     type2: 0,
                     obj: {
-                        txt: ['登录成功', '当前邀请人数已满5人'][res.data.pop_up || 0]
+                        txt: '当前邀请人数已满5人'
                     }
                 }
             })

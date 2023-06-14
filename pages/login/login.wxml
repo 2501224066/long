@@ -19,7 +19,7 @@
     <view class="c" style="top: 56%;left: 65%; width: 23%;height: 4%;" bindtap="ma"></view>
 
     <image wx:if="{{sendTime > 0}}" class="c" style="top: 55.9%;left: 65%; width: 23%;height: 4.5%;" src="../../images/huise.png" mode="aspectFit" bindtap="getCaptcha"></image>
-    <view wx:if="{{sendTime > 0}}" class="c" style="top: 56.8%;left: 65%; width: 23%;height: 4.5%;text-align: center;font-size: 28rpx">已发送{{sendTime > 0 ? '('+sendTime+')' : ''}}</view>
+    <view wx:if="{{sendTime > 0}}" class="c" style="top: 55.9%;left: 65%; width: 23%;height: 4.5%;text-align: center;font-size: 28rpx;display: flex;flex-direction: column;justify-content: center;">已发送{{sendTime > 0 ? '('+sendTime+')' : ''}}</view>
 
     <view class="c" style="top: 62%;left: 27%; width: 46%;height: 9%;" bindtap="denglu"></view>
 

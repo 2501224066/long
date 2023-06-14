@@ -29,7 +29,8 @@ Component({
         region: ['广东省', '深圳市', '南山区'],
         address: null,
         codeList: [],
-        tijiao: true
+        tijiao: true,
+        luck_rule: wx.getStorageSync('luckRule')
     },
     methods: {
         close: function () {
@@ -112,7 +113,8 @@ Component({
                     })
                 }
                 this.setData({
-                    type2: 2
+                    type2: 2,
+                    luck_rule: wx.getStorageSync('luckRule')
                 })
             })
         },
@@ -122,6 +124,8 @@ Component({
                 data: e.target.dataset.txt,
                 success() {
                     wx.showToast({
+                duration: 2000,
+                        mask: true,
                         icon: 'none',
                         title: '复制成功',
                     })
@@ -133,20 +137,26 @@ Component({
             if (this.data.type === 11) {
                 if (this.data.name === null) {
                     wx.showToast({
+                duration: 2000,
+                        mask: true,
                         icon: "none",
                         title: '请输入收件人',
                     })
                     return
                 }
-                if (this.data.mobile === null) {
+                if (!(/^1[0-9][0-9]\d{4,8}$/.test(this.data.phone))) {
                     wx.showToast({
+                duration: 2000,
+                        mask: true,
                         icon: "none",
-                        title: '请输入手机号码',
+                        title: '请输入正确的手机号码',
                     })
                     return
                 }
                 if (this.data.address === null) {
                     wx.showToast({
+                duration: 2000,
+                        mask: true,
                         icon: "none",
                         title: '请输入详细地址',
                     })
@@ -161,11 +171,13 @@ Component({
                     "address": this.data.address,
                 }).then(res => {
                     wx.showToast({
+                duration: 2000,
+                        mask: true,
                         icon: "success",
                         title: '设置成功',
                     })
                     this.setData({
-                        show: false
+                        tijiao: true
                     })
                 })
             }
