@@ -141,7 +141,6 @@ Page({
         app.globalData.leitingweb.track('click_goFinish')
         if (e.target.dataset.status !== '3') {
             wx.showToast({
-                duration: 2000,
                 mask: true,
                 icon: "none",
                 title: e.target.dataset.status === 2 ? '任务已完成' : '任务已结束'
@@ -175,7 +174,6 @@ Page({
         app.globalData.leitingweb.track('click_draw')
         if (lock) {
             wx.showToast({
-                duration: 2000,
                 mask: true,
                 icon: "none",
                 title: '抽奖中,请勿重复操作',
@@ -198,14 +196,15 @@ Page({
         this.setData({
             zhongjiang: list[i]
         })
-        if (quan === 0 && this.data.luckList[list[i]].id === this.data.luck.luck_key) {
+        if (quan === 0 && (this.data.luck.luck_type === 6 || this.data.luckList[list[i]].id === this.data.luck.luck_key)) {
             this.setData({
                 alert: {
                     show: true,
-                    type: this.data.luck.luck_key === 9 ? 10 : 9,
+                    type: this.data.luck.luck_type === 6 ? 10 : 9,
                     type2: 0,
                     obj: this.data.luck
-                }
+                },
+                zhongjiang: this.data.luck.luck_type === 6 ? null : this.data.zhongjiang
             })
             lock = false
             return
@@ -288,7 +287,6 @@ Page({
         }
         if (this.data.dingyue === 1) {
             wx.showToast({
-                duration: 2000,
                 mask: true,
                 icon: "none",
                 title: '您已完成订阅',
@@ -340,7 +338,6 @@ Page({
     jiebang() {
         loginOut().then(res => {
             wx.showToast({
-                duration: 2000,
                 mask: true,
                 icon: 'success',
                 title: '解绑成功',
