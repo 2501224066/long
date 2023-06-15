@@ -111,14 +111,18 @@ Page({
       })
       return
     }
+    this.setData({
+      sendTime: 60
+    })
     smsMobile({
       mobile: this.data.phone,
       key: this.data.captchaKey,
       captcha_code: this.data.code1
     }).then(res => {
-      if (res.code === -1) {
+      if (res.code !== 200) {
         this.setData({
-          code1: null
+          code1: null,
+          sendTime: 0
         })
         this.getCaptcha()
       } else {
@@ -127,9 +131,6 @@ Page({
           mask: true,
           icon: "success",
           title: '发送成功',
-        })
-        this.setData({
-          sendTime: 60
         })
         this.setSendTime()
       }

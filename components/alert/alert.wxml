@@ -78,8 +78,8 @@
                             <view wx:if="{{item.luck_status === 2 && item.luck_value.length}}" style="font-size: 20rpx;">{{item.luck_value}}</view>
                         </view>
                         <view>
-                            <image wx:if="{{item.luck_status === 1 && obj.count < 5}}" src="../../images/xz.png" mode="widthFix" style="width: 90rpx" bindtap="xuanze" data-id="{{item.id}}"></image>
-                            <image wx:if="{{item.luck_status === 1 && obj.count >= 5 }}" src="../../images/uxz.png" mode="widthFix" style="width: 90rpx"></image>
+                            <image wx:if="{{item.luck_status === 1 && obj.count < 4}}" src="../../images/xz.png" mode="widthFix" style="width: 90rpx" bindtap="xuanze" data-id="{{item.id}}"></image>
+                            <image wx:if="{{item.luck_status === 1 && obj.count >= 4 }}" src="../../images/uxz.png" mode="widthFix" style="width: 90rpx"></image>
                             <image wx:if="{{item.luck_status === 2 && item.luck_type === '1'}}" src="../../images/fuzhi.png" mode="widthFix" style="width: 90rpx" bindtap="fuzhi" data-txt="{{item.luck_value}}"></image>
                             <image wx:if="{{item.luck_status === 2 && item.luck_type !== '1' }}" src="../../images/yxz.png" mode="widthFix" style="width: 90rpx" data-id="{{item.id}}"></image>
                         </view>
