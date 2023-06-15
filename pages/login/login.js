@@ -166,6 +166,10 @@ Page({
             })
             return
         }
+        wx.showLoading({
+            title: '登录中',
+            mask: true
+        })
         let that = this
         wx.login({
             success(e) {
@@ -181,6 +185,7 @@ Page({
                             icon: "none",
                             title: res.msg,
                         })
+                        wx.hideLoading()
                     } else if (res.code === 703) {
                         that.setData({
                             alert: {
@@ -189,6 +194,7 @@ Page({
                                 type2: 0
                             }
                         })
+                        wx.hideLoading()
                     } else {
                         that.denglu2()
                     }
@@ -211,6 +217,7 @@ Page({
             wx.setStorageSync('userId', res.data.id)
             wx.setStorageSync('token', res.data.token)
             wx.removeStorageSync('ivId')
+            wx.hideLoading()
             if (res.data.pop_up === 2) {
                 wx.redirectTo({
                     url: "/pages/share/share",

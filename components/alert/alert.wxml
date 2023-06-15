@@ -19,7 +19,7 @@
         </view>
 
         <view class="txt4" wx:if="{{type === 4}}">
-            <text>{{obj.txt}}</text>
+            <rich-text nodes="{{obj.txt}}"></rich-text>
         </view>
 
         <!--
@@ -44,8 +44,7 @@
 
         <view class="txt7" wx:if="{{type === 7}}">
             <image bindtap="preview" data-src="{{obj.qr || '../../images/jitui.png'}}" src="{{obj.qr || '../../images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
-            <view>长按扫码{{obj.title}}</view>
-            <view>获取更多游戏福利和资讯</view>
+            <text>{{obj.title}}</text>
         </view>
 
         <view class="txt8" wx:if="{{type === 8}}">
@@ -76,16 +75,18 @@
                         <view>{{item.created_at}}</view>
                         <view>
                             <view>{{item.luck_title}}</view>
-                            <view wx:if="{{item.luck_value.length}}" style="font-size: 20rpx;">{{item.luck_value}}</view>
+                            <view wx:if="{{item.luck_status === 2 && item.luck_value.length}}" style="font-size: 20rpx;">{{item.luck_value}}</view>
                         </view>
                         <view>
-                            <image src="../../images/fuzhi.png" mode="widthFix" style="width: 90rpx" bindtap="fuzhi" data-txt="{{item.luck_title+'【'+item.luck_value+'】'}}"></image>
+                            <image wx:if="{{item.luck_status === 1 && obj.count < 5}}" src="../../images/xz.png" mode="widthFix" style="width: 90rpx" bindtap="xuanze" data-id="{{item.id}}"></image>
+                            <image wx:if="{{item.luck_status === 1 && obj.count >= 5 }}" src="../../images/uxz.png" mode="widthFix" style="width: 90rpx"></image>
+                            <image wx:if="{{item.luck_status === 2 && item.luck_type === '1'}}" src="../../images/fuzhi.png" mode="widthFix" style="width: 90rpx" bindtap="fuzhi" data-txt="{{item.luck_value}}"></image>
+                            <image wx:if="{{item.luck_status === 2 && item.luck_type !== '1' }}" src="../../images/yxz.png" mode="widthFix" style="width: 90rpx" data-id="{{item.id}}"></image>
                         </view>
                     </view>
                 </view>
                 <view style="color: #e25a54;">
-                    <view>*游戏内道具奖励发放规则请在活动规则中查看；</view>
-                    <view> 实物奖励请填写收货信息，公测后会统一发放。</view>
+                    <view>*仅可选择4个奖励，选择后无法更改。京东卡奖励选择后立即发放卡密，其余奖励公测后统一发放。</view>
                 </view>
             </view>
             <view wx:if="{{type2===1}}">
@@ -93,8 +94,9 @@
                     <view wx:if="{{codeList.length === 0}}" style="padding-top: 10%;color: #999;font-size: 30rpx">还未获得抽奖码，快去邀请好友吧!</view>
                     <view wx:for="{{codeList}}" wx:key="index">{{item.luck_code}}</view>
                 </view>
-                <view style="height: 35%;overflow: auto;">
-                    <text>规则说明： {{luck_rule}}</text>
+                <view style="height: 35%;overflow: auto;text-align: left">
+                    <view>规则说明:</view>
+                    <rich-text nodes="{{luck_rule}}"></rich-text>
                 </view>
             </view>
             <view wx:if="{{type2===2}}">

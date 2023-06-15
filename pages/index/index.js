@@ -7,7 +7,6 @@ import {
     getData,
     getLuckInfo,
     manNum,
-    invite,
     only,
     config,
     subscribe
@@ -50,12 +49,12 @@ Page({
             loginStatus: wx.getStorageSync('loginStatus') || false,
             phone: phone ? (phone.substr(0, 3) + '****' + phone.substr(7, 4)) : null
         })
-        this.init()
         this.getInviteList()
         this.getTodoList()
         this.getLuckList()
         this.getManNum()
         this.getConfig()
+        this.init()
         if (wx.getStorageSync('loginStatus') && !wx.getStorageSync('yycg') && !this.data.alert.show) {
             this.setData({
                 alert: {
@@ -131,7 +130,7 @@ Page({
                 type2: 0,
                 obj: {
                     qr: e.target.dataset.type === '1' ? this.data.config.wechat_image : this.data.config.workchat_image,
-                    title: e.target.dataset.type === '1' ? '官方公众号' : '官方企业微信号'
+                    title: e.target.dataset.type === '1' ? this.data.config.wechat_image_text : this.data.config.workchat_image_text
                 }
             }
         })
@@ -139,7 +138,7 @@ Page({
 
     quwancheng(e) {
         app.globalData.leitingweb.track('click_goFinish')
-        if (e.target.dataset.status !== '3') {
+        if (e.target.dataset.type !== '3' || (e.target.dataset.type === '3' && !e.target.dataset.qr)) {
             wx.showToast({
                 mask: true,
                 icon: "none",
@@ -298,10 +297,12 @@ Page({
         wx.requestSubscribeMessage({
             tmplIds: ['chIgRVBmZrBHvmDDr8oJ-dcOg5VKwnk1wFvevjirQkA', 'chIgRVBmZrBHvmDDr8oJ-WLLresqqDPK3SDRh5OrFQ0', 'DqFoX0vAPXAF5_aZz8zmbFgk-7tDyQMm0WZvcvcnswk'],
             success(res) {
-                subscribe()
-                that.setData({
-                    dingyue: 1
-                })
+                if (res['chIgRVBmZrBHvmDDr8oJ-dcOg5VKwnk1wFvevjirQkA'] === "accept") {
+                    subscribe()
+                    that.setData({
+                        dingyue: 1
+                    })
+                }
             },
             fail(e) {
                 console.log(e)
@@ -372,10 +373,15 @@ Page({
                 rejects()
             })
         }
-        if (this.config.miss_status !== 1) this.unyaoqing()
+
+        if (this.data.config.miss_status !== 1) {
+            this.unyaoqing()
+            obj.promise = new Promise((resolve, rejects) => {
+                rejects()
+            })
+        }
 
         app.globalData.leitingweb.track('click_invite')
-        if (this.data.loginStatus) invite()
         return obj
     }
 })

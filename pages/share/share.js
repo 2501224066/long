@@ -58,12 +58,18 @@ Page({
             if (res.code === 701) {
                 this.setData({
                     alert: {
-                        alert: {
-                            show: true,
-                            type: 3,
-                            type2: 0,
-                        },
-                    }
+                        show: true,
+                        type: 3,
+                        type2: 0,
+                    },
+                })
+                return
+            } else if (res.code !== 200) {
+                wx.showToast({
+                    duration: 2000,
+                    mask: true,
+                    icon: "none",
+                    title: res.msg,
                 })
                 return
             }

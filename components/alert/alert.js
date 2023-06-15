@@ -1,7 +1,9 @@
 import {
     getCodeInfo,
     getAddress,
-    setAddress
+    setAddress,
+    receive,
+    getLuckInfo
 } from "../../api/index"
 
 Component({
@@ -33,6 +35,19 @@ Component({
         luck_rule: wx.getStorageSync('luckRule')
     },
     methods: {
+        xuanze: function (e) {
+            let that = this
+            receive({
+                id: e.currentTarget.dataset.id
+            }).then(res => {
+                getLuckInfo().then(res => {
+                    that.setData({
+                        obj: res.data
+                    })
+                })
+            })
+        },
+
         close: function () {
             this.setData({
                 show: false
@@ -124,7 +139,7 @@ Component({
                 data: e.target.dataset.txt,
                 success() {
                     wx.showToast({
-                duration: 2000,
+                        duration: 2000,
                         mask: true,
                         icon: 'none',
                         title: '复制成功',
@@ -137,7 +152,7 @@ Component({
             if (this.data.type === 11) {
                 if (this.data.name === null) {
                     wx.showToast({
-                duration: 2000,
+                        duration: 2000,
                         mask: true,
                         icon: "none",
                         title: '请输入收件人',
@@ -146,7 +161,7 @@ Component({
                 }
                 if (!(/^1[0-9][0-9]\d{4,8}$/.test(this.data.phone))) {
                     wx.showToast({
-                duration: 2000,
+                        duration: 2000,
                         mask: true,
                         icon: "none",
                         title: '请输入正确的手机号码',
@@ -155,7 +170,7 @@ Component({
                 }
                 if (this.data.address === null) {
                     wx.showToast({
-                duration: 2000,
+                        duration: 2000,
                         mask: true,
                         icon: "none",
                         title: '请输入详细地址',
@@ -171,13 +186,13 @@ Component({
                     "address": this.data.address,
                 }).then(res => {
                     wx.showToast({
-                duration: 2000,
+                        duration: 2000,
                         mask: true,
                         icon: "success",
                         title: '设置成功',
                     })
                     this.setData({
-                        tijiao: true
+                        tijiao: false
                     })
                 })
             }

@@ -132,14 +132,6 @@ export function accept(data, repair = '') {
     })
 }
 
-export function invite(data, repair = '') {
-    return common.go({
-        method: 'get',
-        url: '/user/invite' + repair,
-        data: data
-    })
-}
-
 export function captcha(data, repair = '') {
     return common.go({
         method: 'get',
@@ -176,6 +168,14 @@ export function subscribe(data, repair = '') {
     return common.go({
         method: 'get',
         url: '/user/subscribe' + repair,
+        data: data
+    })
+}
+
+export function receive(data, repair = '') {
+    return common.go({
+        method: 'get',
+        url: '/luck/receive' + repair,
         data: data
     })
 }
