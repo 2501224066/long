@@ -41,7 +41,6 @@ const go = function (obj) {
                     mask: true,
                     icon: 'none',
                     title: '网络请求超时，请退出重试',
-                    duration: 4000,
                 })
             }
         })
