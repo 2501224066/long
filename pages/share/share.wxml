@@ -13,7 +13,7 @@
     </view>
 
     <view class="c tel" style="top: 55.7%;left: 11%; width: 46%;">
-        {{ivPhone}}
+        {{!ivPhone || ivPhone === 'null' ? '某个好人' :ivPhone}}
     </view>
 
     <view class="c" style="top: 64.5%;left: 27%; width: 46%;height: 10%;" bindtap="jieshou"></view>

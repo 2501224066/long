@@ -43,6 +43,21 @@ Page({
         })
     },
 
+    getInfo() {
+        app.globalData.leitingweb.track('click_order')
+        if (wx.getStorageSync('userInfo')) {
+            wx.navigateTo({
+                url: '/pages/login/login',
+            })
+            return
+        }
+        this.setData({
+            info: {
+                show: true
+            }
+        })
+    },
+
     jieshou() {
         app.globalData.leitingweb.track('click_accept')
         if (wx.getStorageSync('loginStatus')) {
@@ -73,11 +88,7 @@ Page({
                 })
                 return
             }
-            this.setData({
-                info: {
-                    show: true
-                }
-            })
+            this.getInfo()
         })
     },
 })
