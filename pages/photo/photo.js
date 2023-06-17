@@ -1,18 +1,23 @@
-// pages/photo/photo.js
+import {
+  image
+} from "../../api/index"
+
 Page({
   data: {
     img: null
   },
 
   onLoad(options) {
-    this.getImg(options.pid)
+    this.getImg(options.pid || 1)
   },
 
   async getImg(pid) {
-    let res = await img({
+    let res = await image({
       pid
     })
-    this.data.img = res.data
+    this.setData({
+      img: res.data.path
+    })
   },
 
   preview: function (e) {

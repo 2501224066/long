@@ -62,7 +62,7 @@
         <view style="display: flex;align-items: center;">
             <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/{{todoList[0][0].status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-status="{{todoList[0][0].status}}"></image>
+        <image class="wc" src="../../images/{{todoList[0][0].status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-type="1" data-status="{{todoList[0][0].status}}"></image>
     </view>
 
     <!-- 限时 -->
@@ -74,8 +74,8 @@
         <button class="ub" open-type="share" wx:if="{{item.status === 1}}">
             <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
         </button>
-        <image wx:if="{{item.status === 2}}" class="wc" src="../../images/yiwancheng.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
-        <image wx:if="{{item.status === 3}}" class="wc" src="../../images/jieshu.png" mode="widthFix" bindtap="quwancheng" data-status="{{item.status}}"></image>
+        <image wx:if="{{item.status === 2}}" class="wc" src="../../images/yiwancheng.png" mode="widthFix" bindtap="quwancheng" data-type="2" data-status="{{item.status}}"></image>
+        <image wx:if="{{item.status === 3}}" class="wc" src="../../images/jieshu.png" mode="widthFix" bindtap="quwancheng" data-type="2" data-status="{{item.status}}"></image>
     </view>
 
     <!-- 单次 -->
@@ -87,7 +87,7 @@
         <image class="wc" src="../../images/{{item.status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-qr="{{item.qrcode}}" data-title="{{item.qrcode_desc}}" data-type="3" data-status="{{item.status}}" data-id="{{item.id}}"></image>
     </view>
 
-    <view class="c" style="bottom:1.5%;left: 18%; width: 28%;height: 4.8%;" bindtap="guanzhu" data-type="1"></view>
+    <view class="c" style="bottom:1.3%;left: 18%; width: 28%;height: 5%;" bindtap="guanzhu" data-type="1"></view>
 
-    <view class="c" style="bottom:1.5%;left: 54%; width: 28%;height: 4.8%;" bindtap="guanzhu" data-type="2"></view>
+    <view class="c" style="bottom:1.3%;left: 54%; width: 28%;height: 5%;" bindtap="guanzhu" data-type="2"></view>
 </view>

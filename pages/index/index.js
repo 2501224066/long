@@ -11,6 +11,11 @@ import {
   config,
   subscribe
 } from '../../api/index'
+
+import {
+  debounce
+} from '../../utils/util'
+
 var app = getApp();
 
 let i = 0
@@ -136,47 +141,48 @@ Page({
     })
   },
 
-  quwancheng(e) {
+  quwancheng: debounce(function (evt) {
     app.globalData.leitingweb.track('click_goFinish')
 
+    const e = evt[0].currentTarget
     if (!this.data.loginStatus) {
       this.getInfo()
       return
     }
 
-    if (e.target.dataset.type !== '3' || (e.target.dataset.type === '3' && !e.target.dataset.qr)) {
+    if (e.dataset.type !== '3' || (e.dataset.type === '3' && !e.dataset.qr)) {
       wx.showToast({
         duration: 2000,
         mask: true,
         icon: "none",
-        title: e.target.dataset.status === 2 ? '任务已完成' : '任务已结束'
+        title: e.dataset.status === 2 ? '任务已完成' : '任务已结束'
       })
       return
     }
-    if (e.target.dataset.type === '3') {
+    if (e.dataset.type === '3') {
       only({
-        miss_id: e.target.dataset.id
+        miss_id: e.dataset.id
       }).then(res => {
         this.getTodoList()
         this.init()
-        if (e.target.dataset.qr.length) {
+        if (e.dataset.qr.length) {
           this.setData({
             alert: {
               show: true,
               type: 7,
               type2: 0,
               obj: {
-                qr: e.target.dataset.qr,
-                title: e.target.dataset.title
+                qr: e.dataset.qr,
+                title: e.dataset.title
               }
             }
           })
         }
       })
     }
-  },
+  }),
 
-  kaishi() {
+  kaishi: debounce(function () {
     app.globalData.leitingweb.track('click_draw')
     if (lock) {
       wx.showToast({
@@ -196,7 +202,7 @@ Page({
       lock = true
       this.gundong()
     })
-  },
+  }),
 
   gundong() {
     const list = [0, 1, 2, 5, 8, 7, 6, 3];
@@ -259,18 +265,8 @@ Page({
 
   },
 
-  mask() {
-    wx.showLoading({
-      title: ' ',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 1000)
-  },
-
-  getInfo() {
+  getInfo: debounce(function () {
     if (wx.getStorageSync('userInfo')) {
-      this.mask()
       wx.navigateTo({
         url: '/pages/login/login',
       })
@@ -282,7 +278,7 @@ Page({
       }
     })
     app.globalData.leitingweb.track('click_order')
-  },
+  }),
 
   guize() {
     this.setData({
@@ -329,7 +325,7 @@ Page({
     })
   },
 
-  beibao() {
+  beibao: debounce(function () {
     getLuckInfo().then(res => {
       if (res.data.list.length) {
         this.setData({
@@ -353,7 +349,7 @@ Page({
         })
       }
     })
-  },
+  }),
 
   jiebang() {
     loginOut().then(res => {

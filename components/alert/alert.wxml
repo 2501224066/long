@@ -90,7 +90,7 @@
                 </view>
             </view>
             <view wx:if="{{type2===1}}">
-                <view class="code" style="height: 60%;">
+                <view class="code" style="height: 58%;padding-bottom: 20%;box-sizing: border-box;">
                     <view wx:if="{{codeList.length === 0}}" style="padding-top: 10%;color: #999;font-size: 30rpx">还未获得抽奖码，快去邀请好友吧!</view>
                     <view wx:for="{{codeList}}" wx:key="index">{{item.luck_code}}</view>
                 </view>
