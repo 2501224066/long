@@ -59,7 +59,6 @@ Page({
     this.getLuckList()
     this.getManNum()
     this.getConfig()
-    this.init()
     if (wx.getStorageSync('loginStatus') && !wx.getStorageSync('yycg') && !this.data.alert.show) {
       this.setData({
         alert: {
@@ -164,7 +163,6 @@ Page({
         miss_id: e.dataset.id
       }).then(res => {
         this.getTodoList()
-        this.init()
         if (e.dataset.qr.length) {
           this.setData({
             alert: {
@@ -249,6 +247,7 @@ Page({
 
   getTodoList() {
     todoList().then(res => {
+      this.init()
       this.setData({
         todoList: res.data
       })
