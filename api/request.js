@@ -17,6 +17,10 @@ const go = function (obj) {
         if (res.data.code === 200) {
           resolve(res.data)
         } else if (res.data.code === 403) {
+          wx.removeStorageSync('loginStatus')
+          wx.removeStorageSync('id')
+          wx.removeStorageSync('token')
+          wx.removeStorageSync('phone')
           setTimeout(() => {
             wx.navigateTo({
               url: "/pages/login/login",

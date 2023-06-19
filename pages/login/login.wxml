@@ -6,7 +6,7 @@
         <image mode="widthFix" src="../../images/home.png"></image>
     </view>
 
-    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}" bind:denglu="denglu2"></alert>
+    <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}" bind:denglu="denglu"></alert>
 
     <input class="c" style="top: 44%;left: 34%; width: 52%;height: 4%;" bindinput="setState" value="{{phone}}" data-name="phone" type="number" maxlength="11" placeholder="输入有效手机号" placeholder-class="placeholder" />
 
