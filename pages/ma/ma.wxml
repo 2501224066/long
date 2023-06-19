@@ -1,9 +1,9 @@
 <!--pages/share/share.wxml-->
 <view class="ma">
-    <image class="bg" mode="widthFix" src="../../images/bg2.png" style="width: 100%;z-index: -1;"></image>
+    <image class="bg" mode="widthFix" src="https://ossstatic.leiting.com/static/lqs/202306/images/bg2.png" style="width: 100%;z-index: -1;"></image>
 
     <view class="fz" bindtap="toHome">
-        <image mode="widthFix" src="../../images/home.png"></image>
+        <image mode="widthFix" src="https://ossstatic.leiting.com/static/lqs/202306/images/home.png"></image>
     </view>
 
 

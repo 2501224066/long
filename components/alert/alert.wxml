@@ -3,7 +3,7 @@
 
     <view class="content">
         <view class="close" bindtap="close"></view>
-        <image class="img" mode="widthFix" src="../../images/alert{{type+type2}}.png" style="margin-left: {{ type === 4 ? '0%' : '7%'}}"></image>
+        <image class="img" mode="widthFix" src="https://ossstatic.leiting.com/static/lqs/202306/images/alert{{type+type2}}.png" style="margin-left: {{ type === 4 ? '0%' : '7%'}}"></image>
 
         <view class="txt1" wx:if="{{type === 1 || type === 3}}">
             <view wx:if="{{type === 1}}">
@@ -43,7 +43,7 @@
         </view>
 
         <view class="txt7" wx:if="{{type === 7}}">
-            <image bindtap="preview" data-src="{{obj.qr || '../../images/jitui.png'}}" src="{{obj.qr || '../../images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
+            <image bindtap="preview" data-src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
             <text>{{obj.title}}</text>
         </view>
 
@@ -78,10 +78,10 @@
                             <view wx:if="{{item.luck_status === 2 && item.luck_value.length}}" style="font-size: 20rpx;">{{item.luck_value}}</view>
                         </view>
                         <view>
-                            <image wx:if="{{item.luck_status === 1 && obj.count < 4}}" src="../../images/xz.png" mode="widthFix" style="width: 90rpx" bindtap="xuanze" data-id="{{item.id}}"></image>
-                            <image wx:if="{{item.luck_status === 1 && obj.count >= 4 }}" src="../../images/uxz.png" mode="widthFix" style="width: 90rpx"></image>
-                            <image wx:if="{{item.luck_status === 2 && item.luck_type === '1'}}" src="../../images/fuzhi.png" mode="widthFix" style="width: 90rpx" bindtap="fuzhi" data-txt="{{item.luck_value}}"></image>
-                            <image wx:if="{{item.luck_status === 2 && item.luck_type !== '1' }}" src="../../images/yxz.png" mode="widthFix" style="width: 90rpx" data-id="{{item.id}}"></image>
+                            <image wx:if="{{item.luck_status === 1 && obj.count < 4}}" src="https://ossstatic.leiting.com/static/lqs/202306/images/xz.png" mode="widthFix" style="width: 90rpx" bindtap="xuanze" data-id="{{item.id}}"></image>
+                            <image wx:if="{{item.luck_status === 1 && obj.count >= 4 }}" src="https://ossstatic.leiting.com/static/lqs/202306/images/uxz.png" mode="widthFix" style="width: 90rpx"></image>
+                            <image wx:if="{{item.luck_status === 2 && item.luck_type === '1'}}" src="https://ossstatic.leiting.com/static/lqs/202306/images/fuzhi.png" mode="widthFix" style="width: 90rpx" bindtap="fuzhi" data-txt="{{item.luck_value}}"></image>
+                            <image wx:if="{{item.luck_status === 2 && item.luck_type !== '1' }}" src="https://ossstatic.leiting.com/static/lqs/202306/images/yxz.png" mode="widthFix" style="width: 90rpx" data-id="{{item.id}}"></image>
                         </view>
                     </view>
                 </view>
@@ -122,7 +122,7 @@
             <view style="position: absolute;top: 20%;left: 35%;width: 23%;height: 10%" bindtap="tabCenter"></view>
             <view style="position: absolute;top: 20%;left: 59%;width: 23%;height: 10%" bindtap="tabRight"></view>
             <view wx:if="{{type2 === 2 && tijiao}}" style="position: absolute;    top: 76%;left: 34%;width: 29%;height: 10%;" bindtap="tijiao">
-                <image src="../../images/tijiao.png" mode="widthFix" style="width: 100%;"></image>
+                <image src="https://ossstatic.leiting.com/static/lqs/202306/images/tijiao.png" mode="widthFix" style="width: 100%;"></image>
             </view>
         </view>
     </view>

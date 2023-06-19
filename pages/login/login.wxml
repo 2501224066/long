@@ -1,9 +1,9 @@
 <!--pages/share/share.wxml-->
 <view class="login">
-    <image class="bg" mode="widthFix" src="../../images/bg3.png" style="width: 100%;z-index: -1;"></image>
+    <image class="bg" mode="widthFix" src="https://ossstatic.leiting.com/static/lqs/202306/images/bg3.png" style="width: 100%;z-index: -1;"></image>
 
     <view class="fz" bindtap="toHome">
-        <image mode="widthFix" src="../../images/home.png"></image>
+        <image mode="widthFix" src="https://ossstatic.leiting.com/static/lqs/202306/images/home.png"></image>
     </view>
 
     <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}" bind:denglu="denglu"></alert>
@@ -18,13 +18,13 @@
 
     <view class="c" style="top: 56%;left: 65%; width: 23%;height: 4%;" bindtap="ma"></view>
 
-    <image wx:if="{{sendTime > 0}}" class="c" style="top: 55.9%;left: 65%; width: 23%;height: 4.5%;" src="../../images/huise.png" mode="aspectFit" bindtap="getCaptcha"></image>
+    <image wx:if="{{sendTime > 0}}" class="c" style="top: 55.9%;left: 65%; width: 23%;height: 4.5%;" src="https://ossstatic.leiting.com/static/lqs/202306/images/huise.png" mode="aspectFit" bindtap="getCaptcha"></image>
     <view wx:if="{{sendTime > 0}}" class="c" style="top: 55.9%;left: 65%; width: 23%;height: 4.5%;text-align: center;font-size: 28rpx;display: flex;flex-direction: column;justify-content: center;">已发送{{sendTime > 0 ? '('+sendTime+')' : ''}}</view>
 
     <view class="c" style="top: 62%;left: 27%; width: 46%;height: 9%;" bindtap="denglu"></view>
 
     <view class="agree c" style="top: 72%;left: 12%; width: 76%;" bindtap="agree">
-        <image src="{{agree ? '../../images/agg2.png' : '../../images/agg1.png'}}" mode="widthFix"></image>
+        <image src="{{agree ? 'https://ossstatic.leiting.com/static/lqs/202306/images/agg2.png' : 'https://ossstatic.leiting.com/static/lqs/202306/images/agg1.png'}}" mode="widthFix"></image>
         <view>我已阅读并同意<span bindtap="xy1">《雷霆游戏隐私协议》</span>和<span bindtap="xy1">《雷霆游戏用户协议》</span></view>
     </view>
 </view>

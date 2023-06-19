@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="home">
-    <image class="bg" mode="widthFix" src="../../images/bg1.png" style="width: 100%;z-index: -1;"></image>
+    <image class="bg" mode="widthFix" src="https://ossstatic.leiting.com/static/lqs/202306/images/bg1.png" style="width: 100%;z-index: -1;"></image>
 
     <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}" bind:dingyue="dingyue"></alert>
 
@@ -14,40 +14,40 @@
     <view class="c" style="top: 7.3%;right: 0; width: 7%;height: 2.6%;" bindtap="beibao"></view>
 
     <button open-type="share" size="mini" class="c ub" style="top: 16.5%;left: 27%; width: 46% !important;height: 2%;">
-        <image wx:if="{{!loginStatus}}" src="../../images/yyyx.png" mode="widthFix" style="width: 100%;"></image>
-        <image wx:else src="../../images/yqhy.png" mode="widthFix" style="width: 100%;"></image>
+        <image wx:if="{{!loginStatus}}" src="https://ossstatic.leiting.com/static/lqs/202306/images/yyyx.png" mode="widthFix" style="width: 100%;"></image>
+        <image wx:else src="https://ossstatic.leiting.com/static/lqs/202306/images/yqhy.png" mode="widthFix" style="width: 100%;"></image>
     </button>
 
 
     <view class="c total" style="top: 18.7%;left: 0%; width: 100%;font-size: 20rpx;font-style: normal;">*每成功邀请一位好友得1个金奖抽奖码</view>
     <view class="c total" style="top: 18.8%;left: 0%; width: 100%;height: 2%;">
-        <image src="../../images/dqyy.png" mode="widthFix"></image>
+        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/dqyy.png" mode="widthFix"></image>
         {{manNum}}
-        <image src="../../images/qsyy.png" mode="widthFix"></image>
+        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/qsyy.png" mode="widthFix"></image>
     </view>
 
     <view class="c" style="top:24.3%;left: 39%; width: 22%;height: 1.2%;" bindtap="dingyue">
-        <image src="../../images/{{dingyue === 1 ? 'yidingyue' : 'dingyue'}}.png" mode="widthFix" style="width: 100%"></image>
+        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/{{dingyue === 1 ? 'yidingyue' : 'dingyue'}}.png" mode="widthFix" style="width: 100%"></image>
     </view>
 
     <!-- 人员 -->
     <view class="c renyuan" style="top:21.2%;left: 0%; width: 100%;">
         <view wx:for="{{inviteList}}" wx:key="index">
-            <image class="tx1" src="{{item.wx_headimgurl || '../../images/touxiang.png'}}" mode="aspectFill" bindtap="yaoqingman"></image>
+            <image class="tx1" src="{{item.wx_headimgurl || 'https://ossstatic.leiting.com/static/lqs/202306/images/touxiang.png'}}" mode="aspectFill" bindtap="yaoqingman"></image>
         </view>
         <view wx:for="{{5 - inviteList.length}}" wx:key="index">
             <button wx:if="{{config.miss_status === 1}}" open-type="share" class="ub">
-                <image class="tx" src="../../images/add.png" mode="widthFix"></image>
+                <image class="tx" src="https://ossstatic.leiting.com/static/lqs/202306/images/add.png" mode="widthFix"></image>
             </button>
-            <image wx:else class="tx" src="../../images/add.png" mode="widthFix" bindtap="unyaoqing"></image>
+            <image wx:else class="tx" src="https://ossstatic.leiting.com/static/lqs/202306/images/add.png" mode="widthFix" bindtap="unyaoqing"></image>
         </view>
     </view>
 
     <!-- 奖励 -->
     <view class="c jiangli" style="top:32.7%;left: 10%; width: 80%;">
         <view class="jl" wx:for="{{luckList}}" wx:key="index">
-            <image wx:if="{{index === 4}}" class="jlbg" src=" ../../images/kaishi.png" mode="widthFix" bindtap="kaishi"></image>
-            <image wx:if="{{index !== 4}}" class="jlbg" src=" ../../images/{{zhongjiang === index ? 'zhongjiang' : 'jiangli'}}.png" mode="widthFix"></image>
+            <image wx:if="{{index === 4}}" class="jlbg" src=" https://ossstatic.leiting.com/static/lqs/202306/images/kaishi.png" mode="widthFix" bindtap="kaishi"></image>
+            <image wx:if="{{index !== 4}}" class="jlbg" src=" https://ossstatic.leiting.com/static/lqs/202306/images/{{zhongjiang === index ? 'zhongjiang' : 'jiangli'}}.png" mode="widthFix"></image>
             <image wx:if="{{index !== 4}}" class="luck" src="{{item.luck_img}}" mode="widthFix"></image>
             <view wx:if="{{index !== 4}}" class="lname">{{item.luck_title}}</view>
             <view wx:if="{{index === 4}}" class="c num">
@@ -60,31 +60,31 @@
     <view class="c item" style="top:53.5%;left: 0; width: 100%;">
         <view>{{todoList[0][0].title}}</view>
         <view style="display: flex;align-items: center;">
-            <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+            <image class="jitui" src="https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/{{todoList[0][0].status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-type="1" data-status="{{todoList[0][0].status}}"></image>
+        <image class="wc" src="https://ossstatic.leiting.com/static/lqs/202306/images/{{todoList[0][0].status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-type="1" data-status="{{todoList[0][0].status}}"></image>
     </view>
 
     <!-- 限时 -->
     <view class="c item" style="top: {{index*2.15 + 58.8 +'%'}};left: 0;width: 100%;" wx:for="{{todoList[1]}}" wx:key="index">
         <view>{{item.title}}</view>
         <view style="display: flex;align-items: center;">
-            <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+            <image class="jitui" src="https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png" mode="widthFix"></image>x1
         </view>
         <button class="ub" open-type="share" wx:if="{{item.status === 1}}">
-            <image class="wc" src="../../images/quwancheng.png" mode="widthFix"></image>
+            <image class="wc" src="https://ossstatic.leiting.com/static/lqs/202306/images/quwancheng.png" mode="widthFix"></image>
         </button>
-        <image wx:if="{{item.status === 2}}" class="wc" src="../../images/yiwancheng.png" mode="widthFix" bindtap="quwancheng" data-type="2" data-status="{{item.status}}"></image>
-        <image wx:if="{{item.status === 3}}" class="wc" src="../../images/jieshu.png" mode="widthFix" bindtap="quwancheng" data-type="2" data-status="{{item.status}}"></image>
+        <image wx:if="{{item.status === 2}}" class="wc" src="https://ossstatic.leiting.com/static/lqs/202306/images/yiwancheng.png" mode="widthFix" bindtap="quwancheng" data-type="2" data-status="{{item.status}}"></image>
+        <image wx:if="{{item.status === 3}}" class="wc" src="https://ossstatic.leiting.com/static/lqs/202306/images/jieshu.png" mode="widthFix" bindtap="quwancheng" data-type="2" data-status="{{item.status}}"></image>
     </view>
 
     <!-- 单次 -->
     <view class="c item" style="top: {{index*2.15 + 73.5 +'%'}};left: 0;width: 100%;" wx:for="{{todoList[2]}}" wx:key="index">
         <view>{{item.title}}</view>
         <view style="display: flex;align-items: center;">
-            <image class="jitui" src="../../images/jitui.png" mode="widthFix"></image>x1
+            <image class="jitui" src="https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png" mode="widthFix"></image>x1
         </view>
-        <image class="wc" src="../../images/{{item.status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-qr="{{item.qrcode}}" data-title="{{item.qrcode_desc}}" data-type="3" data-status="{{item.status}}" data-id="{{item.id}}"></image>
+        <image class="wc" src="https://ossstatic.leiting.com/static/lqs/202306/images/{{item.status === 1 ? 'quwancheng' : 'yiwancheng'}}.png" mode="widthFix" bindtap="quwancheng" data-qr="{{item.qrcode}}" data-title="{{item.qrcode_desc}}" data-type="3" data-status="{{item.status}}" data-id="{{item.id}}"></image>
     </view>
 
     <view class="c" style="bottom:1.3%;left: 18%; width: 28%;height: 5%;" bindtap="guanzhu" data-type="1"></view>
