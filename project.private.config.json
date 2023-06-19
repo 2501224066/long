@@ -9,7 +9,7 @@
                 {
                     "name": "share",
                     "pathName": "pages/share/share",
-                    "query": "id=3&phone=188****2733",
+                    "query": "phone=",
                     "launchMode": "default",
                     "scene": null
                 },

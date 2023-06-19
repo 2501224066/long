@@ -26,6 +26,7 @@ Page({
             ivId: options.id || null,
         })
         if (options.id) wx.setStorageSync('ivId', options.id)
+        if (options.phone) wx.setStorageSync('ivPhone', options.phone)
         this.getManNum()
     },
 

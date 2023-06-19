@@ -6,15 +6,15 @@
 
     <alert show="{{alert.show}}" type="{{alert.type}}" type2="{{alert.type2}}" obj="{{alert.obj}}"></alert>
 
-    <view class="c total" style="top: 45.8%;left: 0%; width: 100%;height: 2%;">
+    <view class="c total" style="top: 60%;left: 0%; width: 100%;height: 2%;">
         <image src="../../images/dqyy.png" mode="widthFix"></image>
         {{manNum}}
         <image src="../../images/qsyy.png" mode="widthFix"></image>
     </view>
 
-    <view class="c tel" style="top: 55.7%;left: 11%; width: 46%;">
+    <view class="c tel" style="top: 67%;left: 11%; width: 46%;">
         {{!ivPhone || ivPhone === 'null' ? '某个好人' :ivPhone}}
     </view>
 
-    <view class="c" style="top: 64.5%;left: 27%; width: 46%;height: 10%;" bindtap="jieshou"></view>
+    <view class="c" style="top: 75%;left: 27%; width: 46%;height: 10%;" bindtap="jieshou"></view>
 </view>

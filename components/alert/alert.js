@@ -199,7 +199,7 @@ Component({
             duration: 2000,
             mask: true,
             icon: "success",
-            title: '设置成功',
+            title: '提交成功',
           })
           this.setData({
             tijiao: false
