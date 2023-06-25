@@ -1,0 +1,36 @@
+.load {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+}
+
+.load .bg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+}
+
+.load .box {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    margin-left: -125rpx;
+    background: #fff;
+    text-align: center;
+}
+
+.load image {
+    width: 250rpx;
+    height: 150rpx;
+    margin-bottom: 20rpx;
+}
+
+.animate {
+    color: #666
+}
