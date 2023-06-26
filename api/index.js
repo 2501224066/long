@@ -166,8 +166,8 @@ export function codeLogin(data, repair = '') {
 
 export function subscribe(data, repair = '') {
   return common.go({
-    method: 'get',
-    url: '/user/subscribe' + repair,
+    method: 'post',
+    url: '/user/sub' + repair,
     data: data
   })
 }
