@@ -265,18 +265,18 @@ Page({
     },
 
     getInfo: debounce(function () {
-        if (wx.getStorageSync('userInfo')) {
+        //if (wx.getStorageSync('userInfo')) {
             wx.navigateTo({
                 url: '/pages/login/login',
             })
-            return
-        }
-        this.setData({
-            info: {
-                show: true
-            }
-        })
-        app.globalData.leitingweb.track('click_order')
+        //    return
+        //}
+        //this.setData({
+        //    info: {
+        //        show: true
+        //    }
+        //})
+        //app.globalData.leitingweb.track('click_order')
     }),
 
     guize() {

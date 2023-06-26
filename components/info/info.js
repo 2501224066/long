@@ -2,7 +2,7 @@ import {
   uploadImage
 } from '../../api/index'
 
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+const defaultAvatarUrl = 'https://ossstatic.leiting.com/static/lqs/202306/images/head.png'
 
 Component({
   properties: {
