@@ -1,3 +1,3 @@
 <view class="photo">
-    <image src="{{img}}" show-menu-by-longpress="{{true}}" mode="aspectFill" style="width: 100%;height: 100%;" />
+    <image bindtap="preview" data-src="{{img}}" src="{{img}}" show-menu-by-longpress="{{true}}" mode="aspectFill" style="width: 100%;height: 100%;" />
 </view>

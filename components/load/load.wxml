@@ -1,9 +1,9 @@
 <view class="load" wx:if="{{show}}">
     <view class="bg">
+        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/ktbg.png" mode="aspectFill" style="width: 100%;height: 100vh;"></image>
     </view>
 
     <view class="box">
         <image src="https://ossstatic.leiting.com/static/lqs/202306/images/load.gif" mode="aspectFill"></image>
-        <view class="animate">加载中...</view>
     </view>
 </view>

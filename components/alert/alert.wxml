@@ -43,7 +43,7 @@
         </view>
 
         <view class="txt7" wx:if="{{type === 7}}">
-            <image show-menu-by-longpress="{{true}}" src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
+            <image show-menu-by-longpress="{{true}}" bindtap="preview" data-src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
             <text>{{obj.title}}</text>
         </view>
 
