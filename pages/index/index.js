@@ -261,22 +261,20 @@ Page({
         luckList: res.data
       })
     })
-
   },
-
   getInfo: debounce(function () {
-    if (wx.getStorageSync('userInfo')) {
-      wx.navigateTo({
-        url: '/pages/login/login',
-      })
-      return
-    }
-    this.setData({
-      info: {
-        show: true
-      }
+    //if (wx.getStorageSync('userInfo')) {
+    wx.navigateTo({
+      url: '/pages/login/login',
     })
-    app.globalData.leitingweb.track('click_order')
+    //    return
+    //}
+    //this.setData({
+    //    info: {
+    //        show: true
+    //    }
+    //})
+    //app.globalData.leitingweb.track('click_order')
   }),
 
   guize() {
@@ -309,13 +307,14 @@ Page({
     app.globalData.leitingweb.track('click_subscribe')
     let that = this
     wx.requestSubscribeMessage({
-      tmplIds: ['chIgRVBmZrBHvmDDr8oJ-dcOg5VKwnk1wFvevjirQkA', 'chIgRVBmZrBHvmDDr8oJ-WLLresqqDPK3SDRh5OrFQ0', 'DqFoX0vAPXAF5_aZz8zmbFgk-7tDyQMm0WZvcvcnswk'],
+      tmplIds: ['chIgRVBmZrBHvmDDr8oJ-dcOg5VKwnk1wFvevjirQkA', 'DqFoX0vAPXAF5_aZz8zmbFgk-7tDyQMm0WZvcvcnswk'],
       success(res) {
         if (res['chIgRVBmZrBHvmDDr8oJ-dcOg5VKwnk1wFvevjirQkA'] === "accept" ||
-          res['chIgRVBmZrBHvmDDr8oJ-WLLresqqDPK3SDRh5OrFQ0'] === "accept" ||
           res['DqFoX0vAPXAF5_aZz8zmbFgk-7tDyQMm0WZvcvcnswk'] === "accept"
         ) {
-          subscribe()
+          subscribe({
+            data: res
+          })
           that.setData({
             dingyue: 1
           })

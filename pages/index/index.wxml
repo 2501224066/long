@@ -22,9 +22,9 @@
 
     <view class="c total" style="top: 18.7%;left: 0%; width: 100%;font-size: 20rpx;font-style: normal;">*每成功邀请一位好友得1个金奖抽奖码</view>
     <view class="c total" style="top: 18.8%;left: 0%; width: 100%;height: 2%;">
-        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/dqyy.png" mode="widthFix"></image>
+        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/dqyy.png" style="height: 32rpx;" mode="heightFix"></image>
         {{manNum}}
-        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/qsyy.png" mode="widthFix"></image>
+        <image src="https://ossstatic.leiting.com/static/lqs/202306/images/qsyy.png" style="height: 32rpx;" mode="heightFix"></image>
     </view>
 
     <view class="c" style="top:24.3%;left: 39%; width: 22%;height: 1.2%;" bindtap="dingyue">

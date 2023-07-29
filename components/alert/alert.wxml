@@ -43,7 +43,7 @@
         </view>
 
         <view class="txt7" wx:if="{{type === 7}}">
-            <image bindtap="preview" data-src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
+            <image show-menu-by-longpress="{{true}}" bindtap="preview" data-src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" src="{{obj.qr || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" mode="aspectFill" style="width: 150rpx;height: 150rpx;margin: 0 auto 20rpx auto;"></image>
             <text>{{obj.title}}</text>
         </view>
 
@@ -104,8 +104,8 @@
                 <input disabled="{{!tijiao}}" style="position: absolute;top: 19.5%;left: 28%; width: 67%;height: 4%;" bindinput="setState" value="{{phone}}" data-name="phone" type="number" maxlength="11" placeholder="请写11位手机号码" placeholder-class="placeholder" />
                 <picker disabled="{{!tijiao}}" mode="region" style="position: absolute;top: 35.5%;left: 28%; width: 67%;height: 4%;" bindchange="bindRegionChange" value="{{region}}">
                     <view class="picker" style="width: 300rpx; overflow:hidden;white-space: nowrap;text-overflow: ellipsis;-o-text-overflow:ellipsis;">
-                        <view wx-if="{{region.length}}">{{region[0]+'-'+region[1]+'-'+region[2]}}</view>
-                        <view wx:else class="placeholder">请选择所在地区</view>
+                        <view wx:if="{{region.length}}">{{region[0]}}-{{region[1]}}-{{region[2]}}</view>
+                        <view wx:else class="placeholder">请填写所在地区</view>
                     </view>
                 </picker>
                 <textarea disabled="{{!tijiao}}" style="position: absolute;top: 51%;left: 28%; width: 67%;height: 18% ;" disable-default-padding="true" auto-focus="true" bindinput="setState" value="{{address}}" data-name="address" type="number" placeholder="街道、楼梯号等" placeholder-class="placeholder" />

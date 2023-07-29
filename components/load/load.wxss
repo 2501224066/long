@@ -19,18 +19,13 @@
 .load .box {
     position: absolute;
     left: 50%;
-    top: 30%;
-    margin-left: -125rpx;
-    background: #fff;
+    bottom: 25%;
+    margin-left: -150rpx;
     text-align: center;
 }
 
 .load image {
-    width: 250rpx;
-    height: 150rpx;
+    width: 300rpx;
+    height: 300rpx;
     margin-bottom: 20rpx;
-}
-
-.animate {
-    color: #666
 }

@@ -45,18 +45,18 @@ Page({
     },
 
     getInfo() {
-        app.globalData.leitingweb.track('click_order')
-        if (wx.getStorageSync('userInfo')) {
+        //app.globalData.leitingweb.track('click_order')
+        //if (wx.getStorageSync('userInfo')) {
             wx.navigateTo({
                 url: '/pages/login/login',
             })
             return
-        }
-        this.setData({
-            info: {
-                show: true
-            }
-        })
+        //}
+        //this.setData({
+        //    info: {
+        //        show: true
+        //    }
+        //})
     },
 
     jieshou() {
