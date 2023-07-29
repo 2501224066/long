@@ -104,7 +104,8 @@
                 <input disabled="{{!tijiao}}" style="position: absolute;top: 19.5%;left: 28%; width: 67%;height: 4%;" bindinput="setState" value="{{phone}}" data-name="phone" type="number" maxlength="11" placeholder="请写11位手机号码" placeholder-class="placeholder" />
                 <picker disabled="{{!tijiao}}" mode="region" style="position: absolute;top: 35.5%;left: 28%; width: 67%;height: 4%;" bindchange="bindRegionChange" value="{{region}}">
                     <view class="picker" style="width: 300rpx; overflow:hidden;white-space: nowrap;text-overflow: ellipsis;-o-text-overflow:ellipsis;">
-                        {{region[0]}}-{{region[1]}}-{{region[2]}}
+                        <view wx-if="{{region.length}}">{{region[0]+'-'+region[1]+'-'+region[2]}}</view>
+                        <view wx:else class="placeholder">请选择所在地区</view>
                     </view>
                 </picker>
                 <textarea disabled="{{!tijiao}}" style="position: absolute;top: 51%;left: 28%; width: 67%;height: 18% ;" disable-default-padding="true" auto-focus="true" bindinput="setState" value="{{address}}" data-name="address" type="number" placeholder="街道、楼梯号等" placeholder-class="placeholder" />

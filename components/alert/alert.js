@@ -28,7 +28,7 @@ Component({
   data: {
     name: null,
     phone: null,
-    region: ['广东省', '深圳市', '南山区'],
+    region: [],
     address: null,
     codeList: [],
     tijiao: true,
