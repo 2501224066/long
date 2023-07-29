@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "load": "/components/load/load"
+  },
+  "navigationStyle": "custom"
+}

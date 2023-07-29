@@ -187,3 +187,11 @@ export function image(data, repair = '') {
     data: data
   })
 }
+
+export function missHome(data, repair = '') {
+  return common.go({
+    method: 'get',
+    url: '/miss/home' + repair,
+    data: data
+  })
+}

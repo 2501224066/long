@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="home">
+    <image class="bg" mode="widthFix" src="https://ossstatic.leiting.com/static/lqs/202306/images/6.png" style="width: 100%;z-index: -1;"></image>
+
+    <load></load>
+
+    <view class="c box">
+        <view style="width: 28%;height: 15%;" wx:for="{{list[0]}}" wx:key="index" bindtap="go" data-path="{{item.path}}">
+            <image show-menu-by-longpress="{{true}}" src="{{item.image}}" mode="widthFix" style="width: 100%"></image>
+        </view>
+    </view>
+
+    <view class=" c" style="bottom: 4.5%;left: 18%;width: 22%;text-align: center;color:#fff;" bindtap="guize">
+        <image show-menu-by-longpress="{{true}}" src="{{list[1][0].image}}" mode="widthFix" style="width: 100%"></image>
+        <view style="font-size: 25rpx;margin-top: 4%;">{{list[1][0].desc}}</view>
+        <view style="font-size: 18rpx;">{{list[1][0].desc[1]}}</view>
+    </view>
+    <view class="c" style="bottom: 4.5%;right: 18%;width: 22%;text-align: center;color:#fff;" bindtap="guize">
+        <image show-menu-by-longpress="{{true}}" src="{{list[1][1].image}}" mode="widthFix" style="width: 100%"></image>
+        <view style="font-size: 25rpx;margin-top: 4%;">{{list[1][1].desc[0]}}</view>
+        <view style="font-size: 18rpx;">{{list[1][1].desc[1]}}</view>
+    </view>
+</view>

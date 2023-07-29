@@ -162,7 +162,6 @@ Page({
       only({
         miss_id: e.dataset.id
       }).then(res => {
-        this.getTodoList()
         if (e.dataset.qr.length) {
           this.setData({
             alert: {
@@ -176,6 +175,12 @@ Page({
             }
           })
         }
+        setTimeout(() => {
+          this.data.todoList[2][e.dataset.key].status = 2
+          this.setData({
+            todoList: this.data.todoList
+          })
+        }, 15000)
       })
     }
   }),
@@ -328,28 +333,28 @@ Page({
 
   beibao: debounce(function () {
     getLuckInfo().then(res => {
-      //if (res.data.list.length) {
-      this.setData({
-        alert: {
-          show: true,
-          type: 11,
-          type2: 0,
-          obj: res.data
-        }
-      })
-      return
-      // } else {
-      this.setData({
-        alert: {
-          show: true,
-          type: 8,
-          type2: 0,
-          obj: {
-            txt: '暂无奖励'
+      if (res.data.list.length) {
+        this.setData({
+          alert: {
+            show: true,
+            type: 11,
+            type2: 0,
+            obj: res.data
           }
-        }
-      })
-      // }
+        })
+        return
+      } else {
+        this.setData({
+          alert: {
+            show: true,
+            type: 8,
+            type2: 0,
+            obj: {
+              txt: '暂无奖励'
+            }
+          }
+        })
+      }
     })
   }),
 

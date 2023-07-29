@@ -1,0 +1,15 @@
+.home {
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+.box {
+  bottom: 0;
+  padding-bottom: 50%;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
