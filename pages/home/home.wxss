@@ -2,11 +2,12 @@
   position: relative;
   left: 0;
   top: 0;
+  height: 100vh;
 }
 
 .box {
   bottom: 0;
-  padding-bottom: 50%;
+  padding-bottom: 25vh;
   box-sizing: border-box;
   width: 100%;
   display: flex;

@@ -35,6 +35,11 @@ Component({
     luck_rule: wx.getStorageSync('luckRule')
   },
   methods: {
+    unTishi(){
+        wx.setStorageSync('appUTS', true)
+        this.close()
+    },
+
     xuanze: function (e) {
       let that = this
       receive({

@@ -159,6 +159,16 @@
   font-size: 22rpx;
 }
 
+.txt14 {
+    position: absolute;
+    left: 0;
+    top: 22%;
+    width: 68%;
+    height: 53%;
+    margin-left: 15%;
+    font-size: 22rpx;
+  }
+
 .txt11>view {
   height: 100%;
 }

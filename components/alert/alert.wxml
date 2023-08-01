@@ -126,6 +126,15 @@
                 <image src="https://ossstatic.leiting.com/static/lqs/202306/images/tijiao.png" mode="widthFix" style="width: 100%;"></image>
             </view>
         </view>
+
+        <view class="txt14" wx:if="{{type === 14}}">
+            <image src="{{obj.img || 'https://ossstatic.leiting.com/static/lqs/202306/images/jitui.png'}}" mode="widthFix" style="width: 320rpx;margin: 0 auto 10rpx auto;"></image>
+            <rich-text nodes="{{obj.txt}}"></rich-text>
+        </view>
+
+        <view wx:if="{{type === 14}}" style="position: absolute;top: 76%;left: 32%;width: 32%;height: 9%;" bindtap="close"></view>
+
+        <view wx:if="{{type === 14}}" style="position: absolute;top: 86%;left: 32%;width: 32%;height: 5%;" bindtap="unTishi"></view>
     </view>
 
 </view>

@@ -21,7 +21,7 @@ Page({
   },
 
   go(e) {
-    wx.redirectTo({
+    wx.navigateTo({
       url: e.currentTarget.dataset.path,
     })
   },
